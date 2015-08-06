@@ -4,7 +4,8 @@ CREATE TABLE estados (
   descricao VARCHAR(30) NOT NULL,
   PRIMARY KEY(codigo)
 );
- --- insert
+ --- 
+
 INSERT INTO estados ('sigla', 'descricao') VALUES ('AC', 'Acre');
 INSERT INTO estados ('sigla', 'descricao') VALUES ('AL', 'Alagoas');
 INSERT INTO estados ('sigla', 'descricao') VALUES ('AP', 'Amapá');
