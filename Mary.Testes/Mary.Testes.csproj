@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{09ADC90F-1716-400B-AC3B-CE0E1CE6CCFE}</ProjectGuid>
+    <ProjectGuid>{2BA44322-F25B-46D9-9A3E-EE9117CDD75A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain</RootNamespace>
-    <AssemblyName>Domain</AssemblyName>
+    <RootNamespace>Mary.Testes</RootNamespace>
+    <AssemblyName>Mary.Testes</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,82 +31,71 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
-      <HintPath>..\Lib\Castle.Core.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v10.1">
-      <HintPath>..\Lib\DevExpress.Data.v10.1.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\DevExpress.Data.v10.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxEditors.v10.1">
-      <HintPath>..\Lib\DevExpress.Web.ASPxEditors.v10.1.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\DevExpress.Web.ASPxEditors.v10.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxThemes.v10.1">
-      <HintPath>..\Lib\DevExpress.Web.ASPxThemes.v10.1.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\DevExpress.Web.ASPxThemes.v10.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.v10.1">
-      <HintPath>..\Lib\DevExpress.Web.v10.1.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\DevExpress.Web.v10.1.dll</HintPath>
     </Reference>
     <Reference Include="FluentNHibernate">
-      <HintPath>..\Lib\FluentNHibernate.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\FluentNHibernate.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections">
-      <HintPath>..\Lib\Iesi.Collections.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\Lib\log4net.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="msmdvbanet">
-      <HintPath>..\Lib\msmdvbanet.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\msmdvbanet.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
-      <HintPath>..\Lib\NHibernate.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.ByteCode.Castle">
-      <HintPath>..\Lib\NHibernate.ByteCode.Castle.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.LambdaExtensions">
-      <HintPath>..\Lib\NHibernate.LambdaExtensions.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\NHibernate.LambdaExtensions.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\Lib\nunit.framework.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.DataAccess">
-      <HintPath>..\Lib\Oracle.DataAccess.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="PostSharp">
-      <HintPath>..\Lib\PostSharp.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\PostSharp.dll</HintPath>
     </Reference>
     <Reference Include="Rhino.Mocks">
-      <HintPath>..\Lib\Rhino.Mocks.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
-      <HintPath>..\Lib\System.Data.SQLite.dll</HintPath>
+      <HintPath>E:\Mary\SolutionMary\Lib\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.Web.UI">
-      <HintPath>..\Lib\Telerik.Web.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Bairro.cs" />
-    <Compile Include="Entities\Interfaces\IBase.cs" />
-    <Compile Include="Entities\Cidade.cs" />
-    <Compile Include="Entities\Cliente.cs" />
-    <Compile Include="Entities\Endereco.cs" />
-    <Compile Include="Entities\Estado.cs" />
-    <Compile Include="Entities\Telefone.cs" />
-    <Compile Include="Entities\Tipo.cs" />
-    <Compile Include="Mappings\EstadoMap.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\BaseRepository.cs" />
-    <Compile Include="Repository\EstadosRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
