@@ -12,6 +12,7 @@ namespace Domain.Mappings
            Map(x => x.Descricao);
            Map(x => x.Sigla);
            References(x => x.Pais);
+           HasMany(x => x.Cidades).Cascade.All();
        }
     }
 }

@@ -8,7 +8,8 @@ namespace Domain.Entities
 {
     public class Cidade : IBase
     {
-        public int Id { get; set; }
-
+        public virtual int Id { get; set; }
+        public virtual string Descricao { get; set; }
+        public virtual Estado Estado { get; set; }
     }
 }
