@@ -11,5 +11,6 @@ namespace Domain.Entities
        public virtual int Id { get; set; }
        public virtual string  Sigla { get; set; }
        public virtual string Descricao { get; set; }
+       public virtual Pais Pais { get; set; }
     }
 }

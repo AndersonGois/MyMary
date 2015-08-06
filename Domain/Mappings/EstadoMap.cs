@@ -11,6 +11,7 @@ namespace Domain.Mappings
            Id(x => x.Id);
            Map(x => x.Descricao);
            Map(x => x.Sigla);
+           References(x => x.Pais);
        }
     }
 }

@@ -14,7 +14,7 @@ namespace Mary.Testes.Infraestrutura
     public class CriaBanco
     {
         [Test]
-       // [Ignore]
+        [Ignore]
         public void a__Criar_Banco_De_Dados_Por_Modelo()
         {
             Fluently.Configure().Database(MsSqlConfiguration.MsSql2005.ConnectionString(c => c
@@ -24,68 +24,79 @@ namespace Mary.Testes.Infraestrutura
         }
 
         [Test]
+        [Ignore]
         public void InsertEstados()
         {
-            var rep = new EstadosRepository();
-            var estado = new Estado { Descricao = "Bahia", Sigla = "BA" };
-            rep.Salvar(estado);
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "AC", Descricao = "Acre" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "AL", Descricao = "Alagoas" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "AP", Descricao = "Amapá" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "AM", Descricao = "Amazonas" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "BA", Descricao = "Bahia" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "CE", Descricao = "Ceará" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "DF", Descricao = "Distrito Federal" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "ES", Descricao = "Espírito Santo" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "GO", Descricao = "Goiás" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "MA", Descricao = "Maranhão" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "MT", Descricao = "Mato Grosso" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "MS", Descricao = "Mato Grosso do Sul" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "MG", Descricao = "Minas Gerais" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "PA", Descricao = "Pará" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "PB", Descricao = "Paraíba" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "PR", Descricao = "Paraná" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "PE", Descricao = "Pernambuco" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "PI", Descricao = "Piauí" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "RJ", Descricao = "Rio de Janeiro" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "RN", Descricao = "Rio Grande do Norte" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "RS", Descricao = "Rio Grande do Sul" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "RO", Descricao = "Rondônia" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "RR", Descricao = "Roraima" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "SC", Descricao = "Santa Catarina" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "SP", Descricao = "São Paulo" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "SE", Descricao = "Sergipe" };
-            rep.Salvar(estado);
-            estado = new Estado { Sigla = "TO", Descricao = "Tocantins" };
-            rep.Salvar(estado);
-          
+            var repPais = new PaisRepository();
+            var pais = new Pais { Nome = "Brasil" };
+            var estado = new Estado { Descricao = "Bahia", Sigla = "BA", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "AC", Descricao = "Acre", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "AL", Descricao = "Alagoas", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "AP", Descricao = "Amapá", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "AM", Descricao = "Amazonas", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "BA", Descricao = "Bahia", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "CE", Descricao = "Ceará", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "DF", Descricao = "Distrito Federal", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "ES", Descricao = "Espírito Santo", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "GO", Descricao = "Goiás", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "MA", Descricao = "Maranhão", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "MT", Descricao = "Mato Grosso", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "MS", Descricao = "Mato Grosso do Sul", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "MG", Descricao = "Minas Gerais", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "PA", Descricao = "Pará", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "PB", Descricao = "Paraíba", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "PR", Descricao = "Paraná", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "PE", Descricao = "Pernambuco", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "PI", Descricao = "Piauí", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "RJ", Descricao = "Rio de Janeiro", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "RN", Descricao = "Rio Grande do Norte", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "RS", Descricao = "Rio Grande do Sul", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "RO", Descricao = "Rondônia", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "RR", Descricao = "Roraima", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "SC", Descricao = "Santa Catarina", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "SP", Descricao = "São Paulo", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "SE", Descricao = "Sergipe", Pais = pais };
+            pais.AdicinarEstado(estado);
+            estado = new Estado { Sigla = "TO", Descricao = "Tocantins", Pais = pais };
+            pais.AdicinarEstado(estado);
+            repPais.Salvar(pais);
         }
+
+        [Test]
+        [Ignore]
+        public void SelectEstado()
+        {
+            var teste = new PaisRepository();
+            var bla = teste.Todos<Pais>();
+        }
+
+
 
 
         private void BuildSchema(Configuration config)
