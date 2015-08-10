@@ -13,6 +13,6 @@ namespace Domain.Entities
         public virtual string Logradouro { get; set; }
         public virtual int? Numero { get; set; }
         public virtual string Complemento { get; set; }
-      //teste
+      //
     }
 }
