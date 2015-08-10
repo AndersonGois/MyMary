@@ -1,6 +1,7 @@
 ﻿
 
 using System.Collections.Generic;
+using System.Linq;
 using Domain.Entities;
 using Domain.Repository;
 using FluentNHibernate.Cfg;
@@ -109,20 +110,23 @@ namespace Mary.Testes.Infraestrutura
         {
             var cidaderepo = new CidadeRepository();
             var enderecoRepo = new EnderecoRepository();
-            var cidade = cidaderepo.Obter<Cidade>(3659);
-            var endereco = new Endereco
-                               {
-                                   Bairro = "Coelho Neto",
-                                   Cidade = cidade,
-                                   Estado = cidade.Estado,
-                                   Complemento = "AP 504",
-                                   Logradouro = "Rua ovídio Beraldo",
-                                   Numero = 49,
-                                   Pais = cidade.Estado.Pais
-                               };
+            var cidade = cidaderepo.Todos<Cidade>().FirstOrDefault();
+            if (cidade != null)
+            {
+                var endereco = new Endereco
+                                   {
+                                       Bairro = "Coelho Neto",
+                                       Cidade = cidade,
+                                       Estado = cidade.Estado,
+                                       Complemento = "AP 504",
+                                       Logradouro = "Rua ovídio Beraldo",
+                                       Numero = 49,
+                                       Pais = cidade.Estado.Pais
+                                   };
 
 
-            enderecoRepo.Salvar(endereco);
+                enderecoRepo.Salvar(endereco);
+            }
         }
 
         #region Metodos Privados
