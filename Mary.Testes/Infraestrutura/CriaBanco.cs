@@ -15,7 +15,7 @@ namespace Mary.Testes.Infraestrutura
     public class CriaBanco
     {
         [Test]
-        //  [Ignore]
+       // [Ignore]
         public void ACriarBancoDeDadosPorModelo()
         {
             Fluently.Configure().Database(MsSqlConfiguration.MsSql2005.ConnectionString(c => c
@@ -25,8 +25,8 @@ namespace Mary.Testes.Infraestrutura
         }
 
         [Test]
-        // [Ignore]
-        public void InsertEstados()
+       // [Ignore]
+        public void AInsertCidades()
         {
             var repPais = new PaisRepository();
             var pais = new Pais { Nome = "Brasil" };
@@ -60,29 +60,96 @@ namespace Mary.Testes.Infraestrutura
             repPais.Salvar(pais);
         }
 
+        [Test]
+        //[Ignore]
+        public void BInsertTipoTel()
+        {
+            var tipotelRepo = new TipoTelRepository();
+            var tipoTel = new TipoTel { Nome = "Fixo Oi" };
+            tipotelRepo.Salvar(tipoTel);
+
+            tipoTel = new TipoTel { Nome = "Celular Oi" };
+            tipotelRepo.Salvar(tipoTel);
+
+            tipoTel = new TipoTel { Nome = "Fixo Tim" };
+            tipotelRepo.Salvar(tipoTel);
+
+            tipoTel = new TipoTel { Nome = "Celular Tim" };
+            tipotelRepo.Salvar(tipoTel);
+
+            tipoTel = new TipoTel { Nome = "Celular Claro" };
+            tipotelRepo.Salvar(tipoTel);
+
+            tipoTel = new TipoTel { Nome = "Fixo Claro" };
+            tipotelRepo.Salvar(tipoTel);
+
+            tipoTel = new TipoTel { Nome = "Celular Vivo" };
+            tipotelRepo.Salvar(tipoTel);
+
+            tipoTel = new TipoTel { Nome = "Fixo Vivo" };
+            tipotelRepo.Salvar(tipoTel);
+
+        }
+
+        [Test]
+        //[Ignore]
+        public void CInsertTelefone()
+        {
+            var teleRepo = new TelefoneRepository();
+            var tipotelrepo = new TipoTelRepository();
+            var tipotel = tipotelrepo.Obter<TipoTel>(1);
+            var telefone = new Telefone {Numero = 21988496958, TipoTel = tipotel};
+            teleRepo.Salvar(telefone);
+
+        }
+
+        [Test]
+        [Ignore]
+        public void ZInsertEndereco()
+        {
+            var cidaderepo = new CidadeRepository();
+            var enderecoRepo = new EnderecoRepository();
+            var cidade = cidaderepo.Obter<Cidade>(3659);
+            var endereco = new Endereco
+                               {
+                                   Bairro = "Coelho Neto",
+                                   Cidade = cidade,
+                                   Estado = cidade.Estado,
+                                   Complemento = "AP 504",
+                                   Logradouro = "Rua ovídio Beraldo",
+                                   Numero = 49,
+                                   Pais = cidade.Estado.Pais
+                               };
+
+
+            enderecoRepo.Salvar(endereco);
+        }
+
+        #region Metodos Privados
+
         private static void GetDf(Pais pais)
         {
             var estado = new Estado
-                             {
-                                 Sigla = "DF",
-                                 Descricao = "Distrito Federal",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "DF",
+                Descricao = "Distrito Federal",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Brasília"}
                                                }
-                             };
+            };
             pais.AdicinarEstado(estado);
         }
 
         private static void GetTo(Pais pais)
         {
             var estado = new Estado
-                             {
-                                 Sigla = "TO",
-                                 Descricao = "Tocantins",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "TO",
+                Descricao = "Tocantins",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Abreulândia"},
                                                    new Cidade {Descricao = "Aguiarnópolis"},
@@ -216,7 +283,7 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Wanderlândia"},
                                                    new Cidade {Descricao = "Xambioá"}
                                                }
-                             };
+            };
 
             pais.AdicinarEstado(estado);
 
@@ -226,11 +293,11 @@ namespace Mary.Testes.Infraestrutura
         {
 
             var estado = new Estado
-                             {
-                                 Sigla = "SE",
-                                 Descricao = "Sergipe",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "SE",
+                Descricao = "Sergipe",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Abreulândia"},
                                                    new Cidade {Descricao = "Amparo de São Francisco"},
@@ -310,7 +377,7 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Tomar do Geru"},
                                                    new Cidade {Descricao = "Umbaúba"}
                                                }
-                             };
+            };
 
 
 
@@ -324,11 +391,11 @@ namespace Mary.Testes.Infraestrutura
         private static void GetSp(Pais pais)
         {
             var estado = new Estado
-                         {
-                             Sigla = "SP",
-                             Descricao = "São Paulo",
-                             Pais = pais,
-                             Cidades = new List<Cidade>
+            {
+                Sigla = "SP",
+                Descricao = "São Paulo",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Exemplo"},
                                                new Cidade {Descricao = "Adamantina"},
@@ -977,7 +1044,7 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Votuporanga"},
                                                new Cidade {Descricao = "Zacarias"}
                                            }
-                         };
+            };
 
 
 
@@ -989,11 +1056,11 @@ namespace Mary.Testes.Infraestrutura
         {
 
             var estado = new Estado
-                             {
-                                 Sigla = "SC",
-                                 Descricao = "Santa Catarina",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "SC",
+                Descricao = "Santa Catarina",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Exemplo"},
                                                    new Cidade {Descricao = "Abdon Batista"},
@@ -1289,7 +1356,7 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Xavantina"},
                                                    new Cidade {Descricao = "Xaxim"}
                                                }
-                             };
+            };
             pais.AdicinarEstado(estado);
 
         }
@@ -1298,11 +1365,11 @@ namespace Mary.Testes.Infraestrutura
         {
 
             var estado = new Estado
-                             {
-                                 Sigla = "RR",
-                                 Descricao = "Roraima",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "RR",
+                Descricao = "Roraima",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Alto Alegre"},
                                                    new Cidade {Descricao = "Amajari"},
@@ -1320,7 +1387,7 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "São Luiz"},
                                                    new Cidade {Descricao = "Uiramutã"}
                                                }
-                             };
+            };
             pais.AdicinarEstado(estado);
 
         }
@@ -1328,11 +1395,11 @@ namespace Mary.Testes.Infraestrutura
         private static void GetRo(Pais pais)
         {
             var estado = new Estado
-                             {
-                                 Sigla = "RO",
-                                 Descricao = "Rondônia",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "RO",
+                Descricao = "Rondônia",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Alta Floresta d`Oeste"},
                                                    new Cidade {Descricao = "Alto Alegre dos Parecis"},
@@ -1387,18 +1454,18 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Vale do Paraíso"},
                                                    new Cidade {Descricao = "Vilhena"}
                                                }
-                             };
+            };
             pais.AdicinarEstado(estado);
         }
 
         private static void GetRs(Pais pais)
         {
             var estado = new Estado
-                            {
-                                Sigla = "RS",
-                                Descricao = "Rio Grande do Sul",
-                                Pais = pais,
-                                Cidades = new List<Cidade>
+            {
+                Sigla = "RS",
+                Descricao = "Rio Grande do Sul",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Exemplo"},
                                                new Cidade {Descricao = "Aceguá"},
@@ -1899,7 +1966,7 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Westfália"},
                                                new Cidade {Descricao = "Xangri-lá"}
                                            }
-                            };
+            };
             pais.AdicinarEstado(estado);
             /*
 
@@ -1909,11 +1976,11 @@ namespace Mary.Testes.Infraestrutura
         private static void GetRn(Pais pais)
         {
             var estado = new Estado
-                            {
-                                Sigla = "RN",
-                                Descricao = "Rio Grande do Norte",
-                                Pais = pais,
-                                Cidades = new List<Cidade>
+            {
+                Sigla = "RN",
+                Descricao = "Rio Grande do Norte",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Acari"},
                                                new Cidade {Descricao = "Açu"},
@@ -2084,7 +2151,7 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Vila Flor"}
 
                                            }
-                            };
+            };
             pais.AdicinarEstado(estado);
         }
 
@@ -2092,11 +2159,11 @@ namespace Mary.Testes.Infraestrutura
         {
 
             var estado = new Estado
-                             {
-                                 Sigla = "RJ",
-                                 Descricao = "Rio de Janeiro",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "RJ",
+                Descricao = "Rio de Janeiro",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Angra dos Reis"},
                                                    new Cidade {Descricao = "Aperibé"},
@@ -2192,18 +2259,18 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Volta Redonda"}
 
                                                }
-                             };
+            };
             pais.AdicinarEstado(estado);
         }
 
         private static void GetPi(Pais pais)
         {
             var estado = new Estado
-                         {
-                             Sigla = "PI",
-                             Descricao = "Piauí",
-                             Pais = pais,
-                             Cidades = new List<Cidade>
+            {
+                Sigla = "PI",
+                Descricao = "Piauí",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Acauã"},
                                                new Cidade {Descricao = "Agricolândia"},
@@ -2430,7 +2497,7 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Wall Ferraz"}
 
                                            }
-                         };
+            };
             pais.AdicinarEstado(estado);
             /*
 
@@ -2440,11 +2507,11 @@ namespace Mary.Testes.Infraestrutura
         private static void GetPe(Pais pais)
         {
             var estado = new Estado
-                         {
-                             Sigla = "PE",
-                             Descricao = "Pernambuco",
-                             Pais = pais,
-                             Cidades = new List<Cidade>
+            {
+                Sigla = "PE",
+                Descricao = "Pernambuco",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Abreu e Lima"},
                                                new Cidade {Descricao = "Afogados da Ingazeira"},
@@ -2633,7 +2700,7 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Xexéu"}
 
                                            }
-                         };
+            };
             pais.AdicinarEstado(estado);
 
         }
@@ -2641,11 +2708,11 @@ namespace Mary.Testes.Infraestrutura
         private static void GetPr(Pais pais)
         {
             var estado = new Estado
-                         {
-                             Sigla = "PR",
-                             Descricao = "Paraná",
-                             Pais = pais,
-                             Cidades = new List<Cidade>
+            {
+                Sigla = "PR",
+                Descricao = "Paraná",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Abatiá"},
                                                new Cidade {Descricao = "Adrianópolis"},
@@ -3048,7 +3115,7 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Xambrê"}
 
                                            }
-                         };
+            };
             pais.AdicinarEstado(estado);
 
         }
@@ -3056,11 +3123,11 @@ namespace Mary.Testes.Infraestrutura
         private static void GetPb(Pais pais)
         {
             var estado = new Estado
-                              {
-                                  Sigla = "PB",
-                                  Descricao = "Paraíba",
-                                  Pais = pais,
-                                  Cidades = new List<Cidade>
+            {
+                Sigla = "PB",
+                Descricao = "Paraíba",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Água Branca"},
                                                new Cidade {Descricao = "Aguiar"},
@@ -3286,7 +3353,7 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Vista Serrana"},
                                                new Cidade {Descricao = "Zabelê"}
                                            }
-                              };
+            };
             pais.AdicinarEstado(estado);
         }
 
@@ -3294,11 +3361,11 @@ namespace Mary.Testes.Infraestrutura
         {
 
             var estado = new Estado
-                             {
-                                 Sigla = "PA",
-                                 Descricao = "Pará",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "PA",
+                Descricao = "Pará",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Abaetetuba"},
                                                    new Cidade {Descricao = "Abel Figueiredo"},
@@ -3444,7 +3511,7 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Vitória do Xingu"},
                                                    new Cidade {Descricao = "Xinguara"}
                                                }
-                             };
+            };
             pais.AdicinarEstado(estado);
 
         }
@@ -3452,11 +3519,11 @@ namespace Mary.Testes.Infraestrutura
         private static void GetMg(Pais pais)
         {
             var estado = new Estado
-                           {
-                               Sigla = "MG",
-                               Descricao = "Minas Gerais",
-                               Pais = pais,
-                               Cidades = new List<Cidade>
+            {
+                Sigla = "MG",
+                Descricao = "Minas Gerais",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Abadia dos Dourados"},
                                                new Cidade {Descricao = "Abaeté"},
@@ -4313,18 +4380,18 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Volta Grande"},
                                                new Cidade {Descricao = "Wenceslau Braz"}
                                            }
-                           };
+            };
             pais.AdicinarEstado(estado);
         }
 
         private static void GetMs(Pais pais)
         {
             var estado = new Estado
-                          {
-                              Sigla = "MS",
-                              Descricao = "Mato Grosso do Sul",
-                              Pais = pais,
-                              Cidades = new List<Cidade>
+            {
+                Sigla = "MS",
+                Descricao = "Mato Grosso do Sul",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
 
                                                new Cidade {Descricao = "Água Clara"},
@@ -4406,7 +4473,7 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Três Lagoas"},
                                                new Cidade {Descricao = "Vicentina"}
                                            }
-                          };
+            };
             pais.AdicinarEstado(estado);
 
         }
@@ -4415,11 +4482,11 @@ namespace Mary.Testes.Infraestrutura
         {
 
             var estado = new Estado
-                          {
-                              Sigla = "MT",
-                              Descricao = "Mato Grosso",
-                              Pais = pais,
-                              Cidades = new List<Cidade>
+            {
+                Sigla = "MT",
+                Descricao = "Mato Grosso",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Acorizal"},
                                                new Cidade {Descricao = "Água Boa"},
@@ -4563,7 +4630,7 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Vila Bela da Santíssima Trindade"},
                                                new Cidade {Descricao = "Vila Rica"}
                                            }
-                          };
+            };
             pais.AdicinarEstado(estado);
 
         }
@@ -4572,11 +4639,11 @@ namespace Mary.Testes.Infraestrutura
         {
 
             var estado = new Estado
-                             {
-                                 Sigla = "MA",
-                                 Descricao = "Maranhão",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "MA",
+                Descricao = "Maranhão",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Açailândia"},
                                                    new Cidade {Descricao = "Afonso Cunha"},
@@ -4796,7 +4863,7 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Vitorino Freire"},
                                                    new Cidade {Descricao = "Zé Doca"}
                                                }
-                             };
+            };
             pais.AdicinarEstado(estado);
         }
 
@@ -4804,11 +4871,11 @@ namespace Mary.Testes.Infraestrutura
         {
 
             var estado = new Estado
-                           {
-                               Sigla = "GO",
-                               Descricao = "Goiás",
-                               Pais = pais,
-                               Cidades = new List<Cidade>
+            {
+                Sigla = "GO",
+                Descricao = "Goiás",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Abadia de Goiás"},
                                                new Cidade {Descricao = "Abadiânia"},
@@ -5057,18 +5124,18 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Vila Boa"},
                                                new Cidade {Descricao = "Vila Propício"}
                                            }
-                           };
+            };
             pais.AdicinarEstado(estado);
         }
 
         private static void GetEs(Pais pais)
         {
             var estado = new Estado
-                          {
-                              Sigla = "ES",
-                              Descricao = "Espírito Santo",
-                              Pais = pais,
-                              Cidades = new List<Cidade>
+            {
+                Sigla = "ES",
+                Descricao = "Espírito Santo",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Afonso Cláudio"},
                                                new Cidade {Descricao = "Água Doce do Norte"},
@@ -5149,18 +5216,18 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Vila Velha"},
                                                new Cidade {Descricao = "Vitória"}
                                            }
-                          };
+            };
             pais.AdicinarEstado(estado);
         }
 
         private static void GetCeara(Pais pais)
         {
             var estado = new Estado
-                          {
-                              Sigla = "CE",
-                              Descricao = "Ceará",
-                              Pais = pais,
-                              Cidades = new List<Cidade>
+            {
+                Sigla = "CE",
+                Descricao = "Ceará",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                            {
                                                new Cidade {Descricao = "Abaiara"},
                                                new Cidade {Descricao = "Acarape"},
@@ -5347,7 +5414,7 @@ namespace Mary.Testes.Infraestrutura
                                                new Cidade {Descricao = "Várzea Alegre"},
                                                new Cidade {Descricao = "Viçosa do Ceará"}
                                            }
-                          };
+            };
             pais.AdicinarEstado(estado);
 
         }
@@ -5355,11 +5422,11 @@ namespace Mary.Testes.Infraestrutura
         private static void GetAmazonas(Pais pais)
         {
             var estado = new Estado
-                             {
-                                 Sigla = "AM",
-                                 Descricao = "Amazonas",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "AM",
+                Descricao = "Amazonas",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Alvarães"},
                                                    new Cidade {Descricao = "Amaturá"},
@@ -5424,7 +5491,7 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Urucará"},
                                                    new Cidade {Descricao = "Urucurituba"}
                                                }
-                             };
+            };
             pais.AdicinarEstado(estado);
 
         }
@@ -5432,11 +5499,11 @@ namespace Mary.Testes.Infraestrutura
         private static void GetAmapa(Pais pais)
         {
             var estado = new Estado
-                             {
-                                 Sigla = "AP",
-                                 Descricao = "Amapá",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "AP",
+                Descricao = "Amapá",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Amapá"},
                                                    new Cidade {Descricao = "Calçoene"},
@@ -5455,7 +5522,7 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Tartarugalzinho"},
                                                    new Cidade {Descricao = "Vitória do Jari"}
                                                }
-                             };
+            };
             pais.AdicinarEstado(estado);
 
         }
@@ -5464,11 +5531,11 @@ namespace Mary.Testes.Infraestrutura
         {
 
             var estado = new Estado
-                             {
-                                 Sigla = "AL",
-                                 Descricao = "Alagoas",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "AL",
+                Descricao = "Alagoas",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Água Branca"},
                                                    new Cidade {Descricao = "Anadia"},
@@ -5573,18 +5640,18 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "União dos Palmares"},
                                                    new Cidade {Descricao = "Viçosa"}
                                                }
-                             };
+            };
             pais.AdicinarEstado(estado);
         }
 
         private static void GetAcre(Pais pais)
         {
             var estado = new Estado
-                             {
-                                 Sigla = "AC",
-                                 Descricao = "Acre",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Sigla = "AC",
+                Descricao = "Acre",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Acrelândia"},
                                                    new Cidade {Descricao = "Assis Brasil"},
@@ -5609,7 +5676,7 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Tarauacá"},
                                                    new Cidade {Descricao = "Xapuri"}
                                                }
-                             };
+            };
 
             pais.AdicinarEstado(estado);
 
@@ -5618,11 +5685,11 @@ namespace Mary.Testes.Infraestrutura
         private static void GetBahia(Pais pais)
         {
             var estado = new Estado
-                             {
-                                 Descricao = "Bahia",
-                                 Sigla = "BA",
-                                 Pais = pais,
-                                 Cidades = new List<Cidade>
+            {
+                Descricao = "Bahia",
+                Sigla = "BA",
+                Pais = pais,
+                Cidades = new List<Cidade>
                                                {
                                                    new Cidade {Descricao = "Abaíra"},
                                                    new Cidade {Descricao = "Abaré"},
@@ -6042,63 +6109,14 @@ namespace Mary.Testes.Infraestrutura
                                                    new Cidade {Descricao = "Wenceslau Guimarães"},
                                                    new Cidade {Descricao = "Xique-Xique"}
                                                }
-                             };
+            };
 
             pais.AdicinarEstado(estado);
 
         }
 
-        [Test]
-        public void BInsertTipoTel()
-        {
-            var tipotelRepo = new TipoTelRepository();
-            var tipoTel = new TipoTel { Nome = "Fixo Oi" };
-            tipotelRepo.Salvar(tipoTel);
+        #endregion
 
-            tipoTel = new TipoTel { Nome = "Celular Oi" };
-            tipotelRepo.Salvar(tipoTel);
-
-            tipoTel = new TipoTel { Nome = "Fixo Tim" };
-            tipotelRepo.Salvar(tipoTel);
-
-            tipoTel = new TipoTel { Nome = "Celular Tim" };
-            tipotelRepo.Salvar(tipoTel);
-
-            tipoTel = new TipoTel { Nome = "Celular Claro" };
-            tipotelRepo.Salvar(tipoTel);
-
-            tipoTel = new TipoTel { Nome = "Fixo Claro" };
-            tipotelRepo.Salvar(tipoTel);
-
-            tipoTel = new TipoTel { Nome = "Celular Vivo" };
-            tipotelRepo.Salvar(tipoTel);
-
-            tipoTel = new TipoTel { Nome = "Fixo Vivo" };
-            tipotelRepo.Salvar(tipoTel);
-
-        }
-
-        [Test]
-          [Ignore]
-        public void ZInsertEndereco()
-        {
-            var cidaderepo = new CidadeRepository();
-            var enderecoRepo = new EnderecoRepository();
-            var cidade = cidaderepo.Obter<Cidade>(3659);
-            var endereco = new Endereco
-                               {
-                                   Bairro = "Coelho Neto",
-                                   Cidade = cidade,
-                                   Estado = cidade.Estado,
-                                   Complemento = "AP 504",
-                                   Logradouro = "Rua ovídio Beraldo",
-                                   Numero = 49,
-                                   Pais = cidade.Estado.Pais
-                               };
-
-
-            enderecoRepo.Salvar(endereco);
-        }
         private void BuildSchema(Configuration config)
         {
             new SchemaExport(config)
