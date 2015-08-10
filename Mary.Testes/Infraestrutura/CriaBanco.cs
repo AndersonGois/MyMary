@@ -30,30 +30,30 @@ namespace Mary.Testes.Infraestrutura
         {
             var repPais = new PaisRepository();
             var pais = new Pais { Nome = "Brasil" };
-            GetBahia(pais);
-            GetAcre(pais);
-            GetAlagoas(pais);
-            GetAmapa(pais);
-            GetAmazonas(pais);
-            GetCeara(pais);
+            //GetBahia(pais);
+            //GetAcre(pais);
+            //GetAlagoas(pais);
+            //GetAmapa(pais);
+            //GetAmazonas(pais);
+            //GetCeara(pais);
             GetDF(pais);
-            GetES(pais);
-            GetGO(pais);
-            GetMA(pais);
-            GetMT(pais);
-            GetMS(pais);
-            GetMG(pais);
-            GetPA(pais);
-            GetPB(pais);
-            GetPR(pais);
-            GetPE(pais);
-            GetPI(pais);
-            GetRJ(pais);
-            GetRN(pais);
-            GetRS(pais);
-            GetRO(pais);
-            GetRR(pais);
-            GetSC(pais);
+            //GetES(pais);
+            //GetGO(pais);
+            //GetMA(pais);
+            //GetMT(pais);
+            //GetMS(pais);
+            //GetMG(pais);
+            //GetPA(pais);
+            //GetPB(pais);
+            //GetPR(pais);
+            //GetPE(pais);
+            //GetPI(pais);
+            //GetRJ(pais);
+            //GetRN(pais);
+            //GetRS(pais);
+            //GetRO(pais);
+            //GetRR(pais);
+            //GetSC(pais);
             GetSP(pais);
             GetSE(pais);
             GetTO(pais);
@@ -5163,7 +5163,17 @@ namespace Mary.Testes.Infraestrutura
                          };
             pais.AdicinarEstado(estado);
         }
-        
+
+        //private static void GetDF(Pais pais)
+        //{
+        //    Estado estado;
+        //    estado = new Estado {Sigla = "DF", Descricao = "Distrito Federal", Pais = pais};
+        //    pais.AdicinarEstado(estado);
+        //    /*
+        //     (882, 'Brasília', 7),
+        //     */
+        //}
+
         private static void GetCeara(Pais pais)
         {
             Estado estado;
