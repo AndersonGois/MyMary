@@ -158,6 +158,9 @@ namespace Mary.Testes.Infraestrutura
             cliente.TomDePele = tomPelerepo.Obter<TomDePele>(1);
             var tipoPeleRepo = new TipoPeleRepository();
             cliente.TipoPele = tipoPeleRepo.Obter<TipoPele>(1);
+
+            var formaContatoRepo = new FormaContatoRepository();
+            cliente.FormaContato = formaContatoRepo.Obter<FormaContato>(1);
             var endereco = new Endereco
             {
                 Bairro = "Coelho Neto",
