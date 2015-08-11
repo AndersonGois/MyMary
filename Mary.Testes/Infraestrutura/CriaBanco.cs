@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Domain.Entities;
 using Domain.Repository;
@@ -9,6 +7,7 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
+using System;
 
 namespace Mary.Testes.Infraestrutura
 {
@@ -16,7 +15,7 @@ namespace Mary.Testes.Infraestrutura
     public class CriaBanco
     {
         [Test]
-       // [Ignore]
+        // [Ignore]
         public void ACriarBancoDeDadosPorModelo()
         {
             Fluently.Configure().Database(MsSqlConfiguration.MsSql2005.ConnectionString(c => c
@@ -26,7 +25,7 @@ namespace Mary.Testes.Infraestrutura
         }
 
         [Test]
-       // [Ignore]
+        // [Ignore]
         public void AInsertCidades()
         {
             var repPais = new PaisRepository();
@@ -96,12 +95,35 @@ namespace Mary.Testes.Infraestrutura
         //[Ignore]
         public void CInsertTelefone()
         {
-            var teleRepo = new TelefoneRepository();
+            var clienteRepo = new ClienteRepository();
+            var cliente = new Cliente { DataNascimento = new DateTime(1976, 9, 20), Nome = "Anderson" };
+
+            var cidaderepo = new CidadeRepository();
+            var enderecoRepo = new EnderecoRepository();
+            var cidade = cidaderepo.Todos<Cidade>().FirstOrDefault();
+            if (cidade == null) return;
+
+            var endereco = new Endereco
+            {
+                Bairro = "Coelho Neto",
+                Cidade = cidade,
+                Estado = cidade.Estado,
+                Complemento = "AP 505",
+                Logradouro = "Rua ovídio Beraldo",
+                Numero = 49,
+                Pais = cidade.Estado.Pais
+            };
+
+
+           // enderecoRepo.Salvar(endereco);
+
+            cliente.Endereco = endereco;
+
             var tipotelrepo = new TipoTelRepository();
             var tipotel = tipotelrepo.Obter<TipoTel>(1);
-            var telefone = new Telefone {Numero = 21988496958, TipoTel = tipotel};
-            teleRepo.Salvar(telefone);
-
+            var telefone = new Telefone { Numero = 21988496958, TipoTel = tipotel };
+            cliente.AdicionarTelefone(telefone);
+            clienteRepo.Salvar(cliente);
         }
 
         [Test]

@@ -9,8 +9,10 @@ namespace Domain.Mappings
       {
           Id(x => x.Id);
           Map(x => x.Nome);
-          HasMany(x => x.Telefone);
-          References(x => x.Endereco);
+          Map(x => x.DataNascimento);
+          HasMany(x => x.Telefones).Cascade.All();
+          References(x => x.Endereco).Cascade.All();
+       
       }
     }
 }
