@@ -12,11 +12,13 @@ namespace Domain.Mappings
           Map(x => x.DataNascimento);
           Map(x => x.Email);
           Map(x => x.Data);
+          Map(x => x.Horario);
           References(x => x.TipoPele).Cascade.SaveUpdate();
           References(x => x.TomDePele).Cascade.SaveUpdate();
           HasMany(x => x.Telefones).Cascade.SaveUpdate();
           References(x => x.Endereco).Cascade.SaveUpdate();
-       
+          References(x => x.FormaContato).Cascade.SaveUpdate();
+
       }
     }
 }

@@ -93,6 +93,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\FormaContato.cs" />
     <Compile Include="Entities\Interfaces\IBase.cs" />
     <Compile Include="Entities\Cidade.cs" />
     <Compile Include="Entities\Cliente.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Mappings\ClienteMap.cs" />
     <Compile Include="Mappings\EnderecoMap.cs" />
     <Compile Include="Mappings\EstadoMap.cs" />
+    <Compile Include="Mappings\FormaContatoMap.cs" />
     <Compile Include="Mappings\PaisMap.cs" />
     <Compile Include="Mappings\TelefoneMap.cs" />
     <Compile Include="Mappings\TipoPeleMap.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\EstadosRepository.cs" />
+    <Compile Include="Repository\FormaContatoRepository.cs" />
     <Compile Include="Repository\PaisRepository.cs" />
     <Compile Include="Repository\TelefoneRepository.cs" />
     <Compile Include="Repository\TipoPeleRepository.cs" />

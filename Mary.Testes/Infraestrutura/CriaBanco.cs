@@ -59,6 +59,23 @@ namespace Mary.Testes.Infraestrutura
           
         }
 
+       
+        [Test]
+        // [Ignore]
+        public void BInsertTFormaContato()
+        {
+            var formaContatoRepo = new FormaContatoRepository();
+            var formaContato = new FormaContato { Descricao = "Email" };
+            formaContatoRepo.Salvar(formaContato);
+
+            formaContato = new FormaContato { Descricao = "Telefone" };
+            formaContatoRepo.Salvar(formaContato);
+
+            formaContato = new FormaContato { Descricao = "Correio" };
+            formaContatoRepo.Salvar(formaContato);
+            
+        }
+
         [Test]
         // [Ignore]
         public void AInsertCidades()
@@ -131,7 +148,7 @@ namespace Mary.Testes.Infraestrutura
         public void CInsertCliente()
         {
             var clienteRepo = new ClienteRepository();
-            var cliente = new Cliente { DataNascimento = new DateTime(1976, 9, 20), Nome = "Anderson", Data = DateTime.Now, Email = "agoisrj@gmail.com" };
+            var cliente = new Cliente { DataNascimento = new DateTime(1976, 9, 20), Nome = "Anderson", Data = DateTime.Now, Email = "agoisrj@gmail.com" ,Horario = 'M'};
 
             var cidaderepo = new CidadeRepository();
             var cidade = cidaderepo.Todos<Cidade>().FirstOrDefault();
@@ -153,8 +170,6 @@ namespace Mary.Testes.Infraestrutura
                 Pais = cidade.Estado.Pais
             };
 
-
-            // enderecoRepo.Salvar(endereco);
 
             cliente.Endereco = endereco;
 

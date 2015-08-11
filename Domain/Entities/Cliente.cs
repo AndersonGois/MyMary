@@ -16,6 +16,7 @@ namespace Domain.Entities
         public virtual IList<Telefone> Telefones { get; set; }
         public virtual TipoPele TipoPele { get; set; }
         public virtual TomDePele TomDePele { get; set; }
+        public virtual FormaContato FormaContato { get; set; }
         public virtual void AdicionarTelefone(Telefone telefone)
         {
             if (Telefones == null)
@@ -23,5 +24,8 @@ namespace Domain.Entities
 
             Telefones.Add(telefone);
         }
+        public virtual char Horario { get; set; }
+
+        
     }
 }
