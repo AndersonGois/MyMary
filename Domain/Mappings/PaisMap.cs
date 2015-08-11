@@ -9,7 +9,7 @@ namespace Domain.Mappings
        public PaisMap()
        {
            Id(x => x.Id);
-           Map(x => x.Nome);
+           Map(x => x.Descricao);
            HasMany(x => x.Estados).Cascade.All();
        }
     }

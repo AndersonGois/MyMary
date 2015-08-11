@@ -12,6 +12,7 @@ namespace Domain.Mappings
             Map(x => x.Logradouro);
             Map(x => x.Numero);
             Map(x => x.Bairro);
+            Map(x => x.Cep);
             References(x => x.Cidade);
             References(x => x.Estado);
             References(x => x.Pais);

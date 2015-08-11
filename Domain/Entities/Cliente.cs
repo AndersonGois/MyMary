@@ -9,9 +9,13 @@ namespace Domain.Entities
     {
         public virtual int Id { get; set; }
         public virtual string Nome { get; set; }
-        public virtual DateTime DataNascimento { get; set; }
+        public virtual DateTime Data { get; set; }
+        public virtual string Email { get; set; }
+        public virtual DateTime? DataNascimento { get; set; }
         public virtual Endereco Endereco { get; set; }
         public virtual IList<Telefone> Telefones { get; set; }
+        public virtual TipoPele TipoPele { get; set; }
+        public virtual TomDePele TomDePele { get; set; }
         public virtual void AdicionarTelefone(Telefone telefone)
         {
             if (Telefones == null)

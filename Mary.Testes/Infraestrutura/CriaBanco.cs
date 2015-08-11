@@ -25,11 +25,46 @@ namespace Mary.Testes.Infraestrutura
         }
 
         [Test]
+      //  [Ignore]
+        public void BInsertTipoPele()
+        {
+            var tipoPeleRepo = new TipoPeleRepository();
+            var tipoPele = new TipoPele { Descricao = "Seca" };
+            tipoPeleRepo.Salvar(tipoPele);
+            
+            tipoPele = new TipoPele { Descricao = "Normal" };
+            tipoPeleRepo.Salvar(tipoPele);
+            
+            tipoPele = new TipoPele { Descricao = "Mista" };
+            tipoPeleRepo.Salvar(tipoPele);
+            
+            tipoPele = new TipoPele { Descricao = "Oleosa" };
+            tipoPeleRepo.Salvar(tipoPele);
+        }
+
+        [Test]
+       // [Ignore]
+        public void BInsertTomDePele()
+        {
+            var tomDePeleRepo = new TomDePeleRepository();
+            var tomDePele = new TomDePele { Descricao = "Ivory" };
+            tomDePeleRepo.Salvar(tomDePele);
+
+            tomDePele = new TomDePele { Descricao = "Beige" };
+            tomDePeleRepo.Salvar(tomDePele);
+
+            tomDePele = new TomDePele { Descricao = "Bronze" };
+            tomDePeleRepo.Salvar(tomDePele);
+
+          
+        }
+
+        [Test]
         // [Ignore]
         public void AInsertCidades()
         {
             var repPais = new PaisRepository();
-            var pais = new Pais { Nome = "Brasil" };
+            var pais = new Pais { Descricao = "Brasil" };
             GetBahia(pais);
             GetAcre(pais);
             GetAlagoas(pais);
@@ -65,49 +100,53 @@ namespace Mary.Testes.Infraestrutura
         public void BInsertTipoTel()
         {
             var tipotelRepo = new TipoTelRepository();
-            var tipoTel = new TipoTel { Nome = "Fixo Oi" };
+            var tipoTel = new TipoTel { Descricao = "Fixo Oi" };
             tipotelRepo.Salvar(tipoTel);
 
-            tipoTel = new TipoTel { Nome = "Celular Oi" };
+            tipoTel = new TipoTel { Descricao = "Celular Oi" };
             tipotelRepo.Salvar(tipoTel);
 
-            tipoTel = new TipoTel { Nome = "Fixo Tim" };
+            tipoTel = new TipoTel { Descricao = "Fixo Tim" };
             tipotelRepo.Salvar(tipoTel);
 
-            tipoTel = new TipoTel { Nome = "Celular Tim" };
+            tipoTel = new TipoTel { Descricao = "Celular Tim" };
             tipotelRepo.Salvar(tipoTel);
 
-            tipoTel = new TipoTel { Nome = "Celular Claro" };
+            tipoTel = new TipoTel { Descricao = "Celular Claro" };
             tipotelRepo.Salvar(tipoTel);
 
-            tipoTel = new TipoTel { Nome = "Fixo Claro" };
+            tipoTel = new TipoTel { Descricao = "Fixo Claro" };
             tipotelRepo.Salvar(tipoTel);
 
-            tipoTel = new TipoTel { Nome = "Celular Vivo" };
+            tipoTel = new TipoTel { Descricao = "Celular Vivo" };
             tipotelRepo.Salvar(tipoTel);
 
-            tipoTel = new TipoTel { Nome = "Fixo Vivo" };
+            tipoTel = new TipoTel { Descricao = "Fixo Vivo" };
             tipotelRepo.Salvar(tipoTel);
 
         }
 
         [Test]
         //[Ignore]
-        public void CInsertTelefone()
+        public void CInsertCliente()
         {
             var clienteRepo = new ClienteRepository();
-            var cliente = new Cliente { DataNascimento = new DateTime(1976, 9, 20), Nome = "Anderson" };
+            var cliente = new Cliente { DataNascimento = new DateTime(1976, 9, 20), Nome = "Anderson", Data = DateTime.Now, Email = "agoisrj@gmail.com" };
 
             var cidaderepo = new CidadeRepository();
-            var enderecoRepo = new EnderecoRepository();
             var cidade = cidaderepo.Todos<Cidade>().FirstOrDefault();
             if (cidade == null) return;
 
+            var tomPelerepo = new TomDePeleRepository();
+            cliente.TomDePele = tomPelerepo.Obter<TomDePele>(1);
+            var tipoPeleRepo = new TipoPeleRepository();
+            cliente.TipoPele = tipoPeleRepo.Obter<TipoPele>(1);
             var endereco = new Endereco
             {
                 Bairro = "Coelho Neto",
                 Cidade = cidade,
                 Estado = cidade.Estado,
+                Cep = 21530140,
                 Complemento = "AP 505",
                 Logradouro = "Rua ovídio Beraldo",
                 Numero = 49,
@@ -115,7 +154,7 @@ namespace Mary.Testes.Infraestrutura
             };
 
 
-           // enderecoRepo.Salvar(endereco);
+            // enderecoRepo.Salvar(endereco);
 
             cliente.Endereco = endereco;
 

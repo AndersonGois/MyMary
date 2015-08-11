@@ -9,7 +9,7 @@ namespace Domain.Mappings
        public TipoTelMap()
        {
            Id(x => x.Id);
-           Map(x => x.Nome);
+           Map(x => x.Descricao);
            
        }
     }

@@ -10,8 +10,12 @@ namespace Domain.Mappings
           Id(x => x.Id);
           Map(x => x.Nome);
           Map(x => x.DataNascimento);
-          HasMany(x => x.Telefones).Cascade.All();
-          References(x => x.Endereco).Cascade.All();
+          Map(x => x.Email);
+          Map(x => x.Data);
+          References(x => x.TipoPele).Cascade.SaveUpdate();
+          References(x => x.TomDePele).Cascade.SaveUpdate();
+          HasMany(x => x.Telefones).Cascade.SaveUpdate();
+          References(x => x.Endereco).Cascade.SaveUpdate();
        
       }
     }
