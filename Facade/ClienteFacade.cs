@@ -12,12 +12,10 @@ namespace Facade
             _repository.Salvar(cliente);
         }
 
-        public IList<TipoPele> GetTodosClientes()
+        public IList<Cliente> GetTodosClientes()
         {
-            var tipoPeleRepo = new TipoPeleRepository();
+            return   _repository.Todos<Cliente>();
 
-            return _repository.Todos<TipoPele>();
-            
         }
     }
 }

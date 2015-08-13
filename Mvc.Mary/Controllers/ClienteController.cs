@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Facade;
+
 
 namespace Mvc.Mary.Controllers
 {
     public class ClienteController : Controller
     {
-        // GET: /Cliente/
-        private  ClienteFacade clienteFacade = new ClienteFacade();
+        private readonly ClienteFacade _clienteFacade = new ClienteFacade();
 
         public ActionResult Index()
         {
-            ViewBag.Teste = clienteFacade.GetTodosClientes().FirstOrDefault().Descricao;
-            
+            var clientes = _clienteFacade.GetTodosClientes();
+            ViewBag.Clientes = clientes;
+            var item = clientes.Select(x => new SelectListItem {Text = x.Nome, Value = x.Id.ToString()});
+
+            ViewBag.Teste = item;
+
             return View();
         }
 

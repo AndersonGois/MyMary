@@ -36,29 +36,6 @@
             @Html.EditorFor(model => model.Email)
             @Html.ValidationMessageFor(model => model.Email)
         </div>
-          <div class="editor-label">
-            @Html.LabelFor(model => model.Endereco.Logradouro)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Endereco.Logradouro)
-            @Html.ValidationMessageFor(model => model.Endereco.Logradouro)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Endereco.Cidade)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("d", (IEnumerable<SelectListItem>)ViewBag.Teste )
-            @Html.ValidationMessageFor(model => model.Endereco.Cep)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Endereco.Cep)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Endereco.Cep)
-            @Html.ValidationMessageFor(model => model.Endereco.Cep)
-        </div>
-
 
         <div class="editor-label">
             @Html.LabelFor(model => model.DataNascimento)
