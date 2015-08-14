@@ -7,7 +7,8 @@
 
 <h2>Index</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -36,7 +37,7 @@
             @Html.EditorFor(model => model.Email)
             @Html.ValidationMessageFor(model => model.Email)
         </div>
-          <div class="editor-label">
+        <div class="editor-label">
             @Html.LabelFor(model => model.Endereco.Logradouro)
         </div>
         <div class="editor-field">
@@ -44,18 +45,31 @@
             @Html.ValidationMessageFor(model => model.Endereco.Logradouro)
         </div>
         <div class="editor-label">
-            @Html.LabelFor(model => model.Endereco.Cidade)
+            @Html.LabelFor(model => model.Endereco.Pais)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("d", (IEnumerable<SelectListItem>)ViewBag.Teste )
-            @Html.ValidationMessageFor(model => model.Endereco.Cep)
+            @Html.DropDownListFor(model => model.Endereco.Pais, (IEnumerable<SelectListItem>)ViewBag.Pais)
+            @Html.ValidationMessageFor(model => model.Endereco.Pais)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Endereco.Estado)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Endereco.Estado, (IEnumerable<SelectListItem>)ViewBag.Estado)
+            @Html.ValidationMessageFor(model => model.Endereco.Estado)
+        </div>
+        
+         <div class="editor-field">
+            @Html.DropDownListFor(model => model.Endereco.Cidade, (IEnumerable<SelectListItem>)ViewBag.Cidade)
+            @Html.ValidationMessageFor(model => model.Endereco.Cidade)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Endereco.Cep)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Endereco.Cep)
+            @Html.TextBoxFor(model => model.Endereco.Cep)
             @Html.ValidationMessageFor(model => model.Endereco.Cep)
         </div>
 
@@ -64,7 +78,7 @@
             @Html.LabelFor(model => model.DataNascimento)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DataNascimento)
+            @Html.TextBoxFor(model => model.DataNascimento)
             @Html.ValidationMessageFor(model => model.DataNascimento)
         </div>
 
@@ -72,7 +86,7 @@
             @Html.LabelFor(model => model.Horario)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Horario)
+            @Html.TextBoxFor(model => model.Horario)
             @Html.ValidationMessageFor(model => model.Horario)
         </div>
 
