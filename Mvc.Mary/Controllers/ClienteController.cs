@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
+using Domain.Entities;
 using Facade;
 
 
@@ -20,6 +21,23 @@ namespace Mvc.Mary.Controllers
 
             return View();
         }
+
+      
+        public ActionResult Teste(int  id)
+        {
+            ViewBag.Estado = Estados(id);
+
+            return Json("Anderson", JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult Index(Cliente cliente)
+        {
+
+            return View();
+        }
+
         private static IEnumerable<SelectListItem> Vazio()
         {
             var item = new SelectListItem { Text = "", Value = "0", Selected = true };
