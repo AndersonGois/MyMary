@@ -34,6 +34,9 @@ namespace Mvc.Mary.Controllers
         [HttpPost]
         public ActionResult Index(Cliente cliente)
         {
+            ViewBag.Pais = Paises();
+            ViewBag.Estado = Estados(1);
+            ViewBag.Cidade = Cidades(1);
 
             return View();
         }

@@ -15,7 +15,8 @@ namespace Domain.Mappings
           Map(x => x.Horario);
           References(x => x.TipoPele).Cascade.SaveUpdate();
           References(x => x.TomDePele).Cascade.SaveUpdate();
-          HasMany(x => x.Telefones).Cascade.SaveUpdate();
+          References(x => x.Anfitriao).ForeignKey("Id");
+          HasMany(x => x.Contatos).Cascade.SaveUpdate();
           References(x => x.Endereco).Cascade.SaveUpdate();
           References(x => x.FormaContato).Cascade.SaveUpdate();
 

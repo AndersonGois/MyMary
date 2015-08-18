@@ -13,18 +13,21 @@ namespace Domain.Entities
         public virtual string Email { get; set; }
         public virtual DateTime? DataNascimento { get; set; }
         public virtual Endereco Endereco { get; set; }
-        public virtual IList<Telefone> Telefones { get; set; }
+        public virtual string Telefone { get; set; }
+        public virtual string Celular { get; set; }
         public virtual TipoPele TipoPele { get; set; }
         public virtual TomDePele TomDePele { get; set; }
         public virtual FormaContato FormaContato { get; set; }
-        public virtual void AdicionarTelefone(Telefone telefone)
+        public virtual IList<Cliente> Contatos { get; set; }
+        public virtual void AdicionarTelefone(Cliente cliente)
         {
-            if (Telefones == null)
-                Telefones = new List<Telefone>();
+            if (Contatos == null)
+                Contatos = new List<Cliente>();
 
-            Telefones.Add(telefone);
+            Contatos.Add(cliente);
         }
         public virtual char Horario { get; set; }
+        public virtual Cliente Anfitriao { get; set; }
 
         
     }

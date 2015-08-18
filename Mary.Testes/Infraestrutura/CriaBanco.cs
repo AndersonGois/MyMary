@@ -173,13 +173,10 @@ namespace Mary.Testes.Infraestrutura
                 Pais = cidade.Estado.Pais
             };
 
-
+            var cliente2 = new Cliente { DataNascimento = new DateTime(1976, 9, 20), Nome = "Rejane", Data = DateTime.Now, Email = "rejaneeanderspn@gmail.com", Horario = 'M' };
             cliente.Endereco = endereco;
 
-            var tipotelrepo = new TipoTelRepository();
-            var tipotel = tipotelrepo.Obter<TipoTel>(1);
-            var telefone = new Telefone { Numero = 21988496958, TipoTel = tipotel };
-            cliente.AdicionarTelefone(telefone);
+            cliente.AdicionarTelefone(cliente2);
             clienteRepo.Salvar(cliente);
         }
 
