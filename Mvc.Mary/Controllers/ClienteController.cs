@@ -22,12 +22,13 @@ namespace Mvc.Mary.Controllers
             return View();
         }
 
-      
-        public ActionResult Teste(int  id)
+
+        public ActionResult Teste(int id)
         {
             ViewBag.Estado = Estados(id);
 
             return Json("Anderson", JsonRequestBehavior.AllowGet);
+            
         }
 
 
@@ -35,8 +36,8 @@ namespace Mvc.Mary.Controllers
         public ActionResult Index(Cliente cliente)
         {
             ViewBag.Pais = Paises();
-            ViewBag.Estado = Estados(1);
-            ViewBag.Cidade = Cidades(1);
+            ViewBag.Estado = Estados(1,cliente.Endereco.Estado.Id);
+            ViewBag.Cidade = Cidades(cliente.Endereco.Estado.Id, cliente.Endereco.Cidade.Id);
 
             return View();
         }
@@ -48,6 +49,7 @@ namespace Mvc.Mary.Controllers
             vazio.SetValue(item, 0);
             return vazio;
         }
+
         private IEnumerable<SelectListItem> Paises()
         {
             return _clienteFacade.GetPais().Select(x => new SelectListItem { Text = x.Descricao, Value = x.Id.ToString(CultureInfo.InvariantCulture) }).Union(Vazio());
@@ -61,6 +63,21 @@ namespace Mvc.Mary.Controllers
         private IEnumerable<SelectListItem> Cidades(int id)
         {
             return _clienteFacade.GetCidadesPorEstado(id).Select(x => new SelectListItem { Text = x.Descricao, Value = x.Id.ToString(CultureInfo.InvariantCulture) }).Union(Vazio());
+        }
+
+        private IEnumerable<SelectListItem> Paises(int id)
+        {
+            return _clienteFacade.GetPais().Select(x => new SelectListItem { Text = x.Descricao, Value = x.Id.ToString(CultureInfo.InvariantCulture), Selected = true }).Union(Vazio());
+        }
+
+        private IEnumerable<SelectListItem> Estados(int id, int estadoId)
+        {
+            return _clienteFacade.GetEstadosPorPais(id).Where(x => x.Id == estadoId).Select(x => new SelectListItem { Text = x.Descricao, Value = x.Id.ToString(CultureInfo.InvariantCulture), Selected = true });
+        }
+
+        private IEnumerable<SelectListItem> Cidades(int id, int cidadeId)
+        {
+            return _clienteFacade.GetCidadesPorEstado(id).Where(x => x.Id == cidadeId).Select(x => new SelectListItem { Text = x.Descricao, Value = x.Id.ToString(CultureInfo.InvariantCulture), Selected = true }).Union(Vazio());
         }
 
 

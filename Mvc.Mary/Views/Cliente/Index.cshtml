@@ -20,14 +20,14 @@
           });*@
 
         @{
-            Model.Telefones = new List<Telefone>();
-        var tel = new Telefone();
-        if (IsPost)
-        {
-            var num1 = long.Parse(Request["Tel"]);
-             tel.Numero = num1;
-         Model.Telefones.Add(tel);  
-        }
+        //    Model.Telefones = new List<Telefone>();
+        //var tel = new Telefone();
+        //if (IsPost)
+        //{
+        //    var num1 = long.Parse(Request["Tel"]);
+        //     tel.Numero = num1;
+        // Model.Telefones.Add(tel);  
+        //}
     }
        $.ajax({
             url: "@Url.Action("Teste")",
@@ -47,9 +47,17 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Cliente</legend>
-        <label>@tel.Numero</label>
-        <input type="text" name="Tel" id="Tel"/>
+      
+      <div ng-controller="ExampleController">
+  <form name="myForm">
+    <label for="repeatSelect"> Repeat select: </label>
+    <select name="repeatSelect" ng-model="data.repeatSelect">
+      <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+    </select>
+  </form>
+  <hr>
+  <tt>repeatSelect = {{data.repeatSelect}}</tt><br/>
+</div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Nome)
         </div>
@@ -127,10 +135,16 @@
         </div>
         
         <div class="editor-label">
-            @Html.LabelFor(model => model.Telefones)
+            @Html.LabelFor(model => model.Telefone)
         </div>
         <div class="editor-field">
-            @Html.ViewBag(Model.Telefones.Add(tel))
+            @Html.EditorFor(model => model.Telefone)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Celular)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Celular)
         </div>
         <p>
             <input type="submit" value="Create" />
