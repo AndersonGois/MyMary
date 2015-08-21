@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
@@ -25,9 +26,8 @@ namespace Mvc.Mary.Controllers
 
         public ActionResult Teste(int id)
         {
-            ViewBag.Estado = Estados(id);
-
-            return Json("Anderson", JsonRequestBehavior.AllowGet);
+         
+            return Json(Paises(), JsonRequestBehavior.AllowGet);
             
         }
 
@@ -50,9 +50,11 @@ namespace Mvc.Mary.Controllers
             return vazio;
         }
 
-        private IEnumerable<SelectListItem> Paises()
+        private IEnumerable Paises()
         {
-            return _clienteFacade.GetPais().Select(x => new SelectListItem { Text = x.Descricao, Value = x.Id.ToString(CultureInfo.InvariantCulture) }).Union(Vazio());
+            var pais = (from b in _clienteFacade.GetPais()
+                     select new {id = b.Id, name=b.Descricao });
+            return pais;
         }
 
         private IEnumerable<SelectListItem> Estados(int id)
