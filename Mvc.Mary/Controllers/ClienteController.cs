@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web.Mvc;
 using Domain.Entities;
 using Facade;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 
 namespace Mvc.Mary.Controllers
@@ -26,9 +28,7 @@ namespace Mvc.Mary.Controllers
 
         public ActionResult Teste(int id)
         {
-         
             return Json(Paises(), JsonRequestBehavior.AllowGet);
-            
         }
 
 

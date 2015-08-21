@@ -20,16 +20,16 @@
           });*@
 
         @{
-                //    Model.Telefones = new List<Telefone>();
-                //var tel = new Telefone();
-                //if (IsPost)
-                //{
-                //    var num1 = long.Parse(Request["Tel"]);
-                //     tel.Numero = num1;
-                // Model.Telefones.Add(tel);  
-                //}
+    //    Model.Telefones = new List<Telefone>();
+    //var tel = new Telefone();
+    //if (IsPost)
+    //{
+    //    var num1 = long.Parse(Request["Tel"]);
+    //     tel.Numero = num1;
+    // Model.Telefones.Add(tel);  
+    //}
     }
-      @*  $.ajax({
+        @*  $.ajax({
             url: "@Url.Action("Teste")",
             data: { Id: 2 },
             success: function (data) {
@@ -45,108 +45,110 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <form name="myForm">
-        <fieldset>
+    <div ng-controller="ClienteController as bos">
+        <form name="myForm">
+            <fieldset>
+                <legend>Cadastro de Clientes</legend>
 
-            <div ng-controller="ExampleController">
-
-                <label for="repeatSelect">Repeat select: </label>
-                <select name="repeatSelect" ng-model="data.repeatSelect">
-                    <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
-                </select>
-
-                <hr>
-
-                <tt>repeatSelect = {{data.repeatSelect}}</tt>
-                <br />
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Nome)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Nome)
-                @Html.ValidationMessageFor(model => model.Nome)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Data)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Data)
-                @Html.ValidationMessageFor(model => model.Data)
-            </div>
+                <tt>repeatSelect = {{bos.teste(mPais)}}{{mPais}}</tt>
 
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Endereco.Estado)
-            </div>
-            <div class="editor-field">
-                @Html.DropDownListFor(model => model.Endereco.Estado.Id, (IEnumerable<SelectListItem>)ViewBag.Estado)
-                @Html.ValidationMessageFor(model => model.Endereco.Estado)
-            </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Nome)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Nome)
+                    @Html.ValidationMessageFor(model => model.Nome)
+                </div>
 
-            <div class="editor-field">
-                @Html.DropDownListFor(model => model.Endereco.Cidade.Id, (IEnumerable<SelectListItem>)ViewBag.Cidade)
-                @Html.ValidationMessageFor(model => model.Endereco.Cidade)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Endereco.Logradouro)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Endereco.Logradouro)
-                @Html.ValidationMessageFor(model => model.Endereco.Logradouro)
-            </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Data)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Data)
+                    @Html.ValidationMessageFor(model => model.Data)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Endereco.Pais)
+                </div>
+                <div class="editor-field">
+                    <select name="Endereco_Pais_Id" id="Endereco_Pais_Id" ng-model="mPais">
+                        <option ng-repeat="option in bos.pais" value="{{option.id}}">{{option.name}}</option>
+                    </select>
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Endereco.Estado)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.Endereco.Estado.Id, (IEnumerable<SelectListItem>)ViewBag.Estado)
+                    @Html.ValidationMessageFor(model => model.Endereco.Estado)
+                </div>
+
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.Endereco.Cidade.Id, (IEnumerable<SelectListItem>)ViewBag.Cidade)
+                    @Html.ValidationMessageFor(model => model.Endereco.Cidade)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Endereco.Logradouro)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Endereco.Logradouro)
+                    @Html.ValidationMessageFor(model => model.Endereco.Logradouro)
+                </div>
 
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Endereco.Cep)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.Endereco.Cep)
-                @Html.ValidationMessageFor(model => model.Endereco.Cep)
-            </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Endereco.Cep)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.Endereco.Cep)
+                    @Html.ValidationMessageFor(model => model.Endereco.Cep)
+                </div>
 
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.DataNascimento)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.DataNascimento)
-                @Html.ValidationMessageFor(model => model.DataNascimento)
-            </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.DataNascimento)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.DataNascimento)
+                    @Html.ValidationMessageFor(model => model.DataNascimento)
+                </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Horario)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.Horario)
-                @Html.ValidationMessageFor(model => model.Horario)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Email)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Email)
-                @Html.ValidationMessageFor(model => model.Email)
-            </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Horario)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.Horario)
+                    @Html.ValidationMessageFor(model => model.Horario)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Email)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Telefone)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Telefone)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Celular)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Celular)
-            </div>
-            <p>
-                <input type="submit" value="Create" />
-            </p>
-        </fieldset>
-    </form>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Telefone)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Telefone)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Celular)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Celular)
+                </div>
+
+                <p>
+                    <input type="submit" value="Create" />
+                </p>
+            </fieldset>
+        </form>
+    </div>
 }
 
 <div>

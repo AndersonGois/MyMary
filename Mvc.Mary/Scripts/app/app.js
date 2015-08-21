@@ -1,28 +1,19 @@
 ﻿/// <reference path="app.js" />
 var app = angular.module("mary", []);
-app.controller('ExampleController', ['$scope', function ($scope) {
-    $scope.data = {
-        singleSelect: null,
-        availableOptions: [
-          { id: '1', name: 'Option A' },
-          { id: '2', name: 'Option B' },
-          { id: '3', name: 'Option C' }
-        ],
-    };
+app.controller('ClienteController', ['$http', function ($http) {
+    var store = this;
+   
+    $http.get("Cliente/Teste/3").success(function (data) {
+        store.pais = data;
+     });
 
 
-    $scope.gr = {
-        put : pu()  
+    store.teste = function(f) {
+        console.log(f);
     };
+
     
     
 }]);
-    var pu = function() {
-        $.ajax({
-            url: "Cliente/Teste",
-            data: { Id: 2 },
-            success: function(data) {
-                return data;
-            }
-        });
-    };
+   
+   
