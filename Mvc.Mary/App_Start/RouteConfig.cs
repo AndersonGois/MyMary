@@ -12,8 +12,9 @@ namespace Mvc.Mary.App_Start
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Cliente", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new {controller = "Cliente", action = "Index", id = UrlParameter.Optional}
+                );
+           
         }
     }
 }
