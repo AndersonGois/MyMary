@@ -9,43 +9,44 @@
 <script type="text/javascript">
 
     $(function () {
-       
+
     });
 </script>
 
-<h2>Index</h2>
+<h2></h2>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
     <div ng-controller="ClienteController as bos">
         <form name="myForm">
+
             <fieldset>
-                <legend>Cadastro de Clientes</legend>
-
-
-
+                <legend>&nbsp; Cadastro de Clientes &nbsp;</legend>
+                
+              
                 <div class="editor-field">
                     <label>Pais:</label>
-                    <select name="Endereco_Pais_Id" id="Endereco_Pais_Id" ng-change="bos.getEstados(mPais)" ng-model="mPais">
-                        <option ng-repeat="option in bos.pais" value="{{option.id}}">{{option.name}}</option>
+                    <select name="mPais" id="mPais" ng-change="bos.getEstados(bos.mPais.singleSelect)" ng-model="bos.mPais.singleSelect">
+                        <option ng-repeat="option in  bos.mPais.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
 
-                <div class="editor-field" ng-show="bos.estados.length">
+                <div class="editor-field" ng-show="bos.mEstado.multipleSelect.length">
                     <label>Estado:</label>
-                    <select name="estadoId"  id="estadoId" ng-model="mEstado" ng-change="bos.getCidades(mEstado)">
-                        <option ng-repeat="option in bos.estados" value="{{option.id}}">{{option.name}}</option>
+                    <select name="estadoId" id="estadoId" ng-model="bos.mEstado.singleSelect" ng-change="bos.getCidades(bos.mEstado.singleSelect)">
+                        <option ng-repeat="option in bos.mEstado.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
-                <div class="editor-field" ng-show="bos.cidades.length">
+                <div class="editor-field" ng-show="bos.mCidade.multipleSelect.length">
                     <label>Cidade:</label>
-                    <select name="cidadeId" id="CidadeID" ng-model="mCidade" >
-                        <option ng-repeat="option in bos.cidades" value="{{option.id}}">{{option.name}}</option>
+                    <select name="cidadeId" id="CidadeID" ng-model="mCidade">
+                        <option ng-repeat="option in bos.mCidade.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
                 <p>
-                    <input type="submit" value="Create" />
+                    <input type="button" ng-click="bos.teste()" value="Salvar" />
+                    {{a}}
                 </p>
             </fieldset>
         </form>
