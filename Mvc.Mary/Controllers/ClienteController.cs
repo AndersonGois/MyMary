@@ -15,10 +15,20 @@ namespace Mvc.Mary.Controllers
         public ActionResult Index()
         {
 
-         
+
             return View();
         }
 
+        public ActionResult Anfitrioes(int? id)
+        {
+            if (id == null)
+            {
+                var clientes = (from b in _clienteFacade.GetTodosClientes()
+                                select new { id = b.Id, name = b.Nome });
+                return Json(clientes, JsonRequestBehavior.AllowGet);
+            }
+            return Json(_clienteFacade.GetCliente(id.Value), JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult Pais()
         {
@@ -30,7 +40,7 @@ namespace Mvc.Mary.Controllers
         public ActionResult Estados(int id)
         {
             var estado = (from b in _clienteFacade.GetEstadosPorPais(id)
-                        select new { id = b.Id, name = b.Descricao });
+                          select new { id = b.Id, name = b.Descricao });
             return Json(estado, JsonRequestBehavior.AllowGet);
         }
 
@@ -50,17 +60,23 @@ namespace Mvc.Mary.Controllers
             return Json(cidade, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Salvar(Cliente cliente)
+        {
+            var pais = (from b in _clienteFacade.GetPais()
+                        select new { id = b.Id, name = b.Descricao });
+            return Json(pais, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public ActionResult Index(Cliente cliente)
         {
-            
+
             return View();
         }
 
-        
 
-       
+
+
 
     }
 }

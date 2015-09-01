@@ -11,12 +11,13 @@
      <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+ 
 </head>
-<body>
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
-    @RenderBody()
-</body>
+    <body>
+        <div class="container" style="background: gainsboro;padding: 10px 10px" >
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+        @RenderBody()
+            </div>
+    </body>
 </html>

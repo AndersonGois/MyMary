@@ -19,6 +19,12 @@ namespace Facade
 
         }
 
+        public Cliente GetCliente(int id)
+        {
+            return _repository.Obter<Cliente>(id);
+
+        }
+
         public IList<Pais> GetPais()
         {
             return _paisRepository.Todos();
