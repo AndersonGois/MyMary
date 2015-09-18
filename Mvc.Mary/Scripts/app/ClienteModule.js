@@ -1,28 +1,24 @@
 ﻿/// <reference path="app.js" />
 var app = angular.module("ClienteModule", []);
-app.controller('ClienteController', ['$http', function ($http) {
+app.controller('ClienteController', ['$http', function($http) {
     var store = this;
-
+    store.myRegex = /[0-9]{2}/;
     store.mPais = {
         singleSelect: null,
         multipleSelect: [],
     };
-
     store.mEstado = {
         singleSelect: null,
         multipleSelect: [],
     };
-
     store.mCidade = {
         singleSelect: null,
         multipleSelect: [],
     };
-
     store.mAnfitriao = {
         singleSelect: null,
         multipleSelect: [],
     };
-
     store.mNome = "";
     store.mData = null;
     store.mEmail = "";
@@ -35,43 +31,39 @@ app.controller('ClienteController', ['$http', function ($http) {
     store.mLogradouro = "";
     store.mNumero = "";
     store.mComplemento = "";
-    
-    store.forceUnknownOption = function () {
+    store.forceUnknownOption = function() {
         store.mPais.singleSelect = { "id": 2, "name": "Japão" };
     };
 
-    $http.get("Cliente/Pais").success(function (data) {
+    $http.get(window.urlAbsoluteUri + "/Cliente/Paiz").success(function(data) {
         store.mPais.multipleSelect = data;
-       
     });
-    
-   
 
-    store.getEstados = function (id) {
-        $http.get("Cliente/Estados/" + id).success(function (data) {
+    store.getEstados = function(id) {
+        $http.get(window.urlAbsoluteUri + "/Cliente/Estados/" + id).success(function(data) {
             store.mEstado.multipleSelect = data;
         });
     };
 
-    store.getAnfitriao = function (id) {
-        $http.get("Cliente/Anfitrioes/" + id).success(function (data) {
+    store.getAnfitriao = function(id) {
+        $http.get(window.urlAbsoluteUri + "/Cliente/Anfitrioes/" + id).success(function(data) {
             store.mAnfitriao.multipleSelect = data;
         });
     };
 
-    store.getCidades = function (id) {
-        $http.get("Cliente/Cidades/" + id).success(function (data) {
+    store.getCidades = function(id) {
+        $http.get(window.urlAbsoluteUri + "/Cliente/Cidades/" + id).success(function(data) {
             store.mCidade.multipleSelect = data;
         });
     };
 
     var salvar = {
         method: 'POST',
-        url: 'Cliente/Salvar/',
+        url: window.urlAbsoluteUri + '/Cliente/Salvar/',
         data: { Cliente: Cliente }
     };
 
-    store.Salvar = function () {
+    store.Salvar = function() {
         Cliente.Endereco.Pais.Id = store.mPais.singleSelect;
         Cliente.Endereco.Estado.Id = store.mEstado.singleSelect;
         Cliente.Endereco.Cidade.Id = store.mCidade.singleSelect;
@@ -87,8 +79,7 @@ app.controller('ClienteController', ['$http', function ($http) {
         Cliente.Telefone = store.mTelefone;
         Cliente.Anfitriao.Id = store.mAnfitriao.singleSelect;
         Cliente.Horario = store.mHorario;
-
-
+        
         $http(salvar);
         limpar();
         console.log(Cliente);
@@ -100,6 +91,7 @@ app.controller('ClienteController', ['$http', function ($http) {
         store.mEstado.singleSelect = null;
         store.mCidade.singleSelect = null;
     }
+
 }]);
 
 var Cliente = {
@@ -134,7 +126,7 @@ Cliente.Endereco = {
 Cliente.Anfitriao = {
     Id: null,
     Nome: null
-};
+ };
 
 Cliente.Endereco.Pais = {
     Id: null,
@@ -151,8 +143,6 @@ Cliente.Endereco.Cidade = {
     Id: null,
     Descricao: null
 };
-
-
 
 Cliente.TipoPele = {
     Id: null,

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Linq;
 using Domain.Entities;
 using Domain.Repository;
 
@@ -6,38 +7,35 @@ namespace Facade
 {
     public class ClienteFacade
     {
-        private readonly ClienteRepository _repository = new ClienteRepository();
-        private readonly PaisRepository _paisRepository = new PaisRepository();
+        
         public void Salvar(ClienteView cliente)
         {
-            _repository.Salvar(cliente);
+            (new ClienteRepository()).Salvar(cliente);
         }
 
-        public IList<Cliente> GetTodosClientes()
+        public IEnumerable GetTodosClientesSelect()
         {
-            return   _repository.Todos<Cliente>();
-
+            return (new ClienteRepository()).Todos().Select(x => new { id = x.Id, name = x.Nome });
         }
 
         public Cliente GetCliente(int id)
         {
-            return _repository.Obter<Cliente>(id);
+            return (new ClienteRepository()).Obter<Cliente>(id);
 
         }
-
-        public IList<Pais> GetPais()
+        public IEnumerable GetPaizSelect()
         {
-            return _paisRepository.Todos();
-        } 
-
-        public  IList<Estado> GetEstadosPorPais(int id)
-        {
-            return (new EstadosRepository()).EstadosPorPais(id);
+            return (new PaisRepository()).Todos().Select(x => new { id = x.Id, name = x.Descricao });
         }
 
-        public IList<Cidade>  GetCidadesPorEstado(int id)
+        public IEnumerable GetEstadosPorPaizSelect(int id)
         {
-            return (new CidadeRepository()).CidadesPorEstado(id);
+            return (new EstadosRepository()).EstadosPorPais(id).Select(x => new { id = x.Id, name = x.Descricao });
+        }
+
+        public IEnumerable GetCidadesPorEstadoSelect(int id)
+        {
+            return (new CidadeRepository()).CidadesPorEstado(id).Select(x => new { id = x.Id, name = x.Descricao });
         }
     }
 }

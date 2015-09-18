@@ -8,17 +8,19 @@
 
 <h2></h2>
 
+
+
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
     <div ng-controller="ClienteController as bos" class="container">
         <form name="myForm" class="form-horizontal">
-            <h1 class="h4"> Cadastro de clientes</h1>
+            <h1 class="h4">Cadastro de clientes</h1>
 
             <div class="row">
                 <label class="control-label col-md-1">Nome:</label>
                 <div class=" col-md-8">
-                    <input name="Nome" class="form-control" id="Nome" ng-model="bos.mNome" />
+                    <input name="Nome" class="form-control" id="Nome" ng-model="bos.mNome"  required ng-pattern="bos.myRegex" />
                 </div>
             </div>
 
@@ -32,7 +34,7 @@
                     <input name="Data" id="Data" ng-model="bos.mData" class="form-control" />
                 </div>
             </div>
-            
+
             <div class="row">
                 <label class="control-label col-md-1">Nascimento:</label>
                 <div class="col-md-2">
@@ -60,14 +62,7 @@
                     <label class="control-label radio-inline">
                         <input type="radio" name="Horario" value="N" ng-model="bos.mHorario" />Noite</label>
                 </div>
-                <div ng-show="bos.mAnfitriao.multipleSelect.length">
-                <label class="control-label col-md-1">Anfitrião:</label>
-                    <div class="col-md-6" >
-                        <select class="form-control" name="Anfitriao" id="Anfitriao" ng-model="bos.mAnfitriao.singleSelect">
-                            <option ng-repeat="option in  bos.mAnfitriao.multipleSelect" value="{{option.id}}">{{option.name}}</option>
-                        </select>
-                    </div>
-                    </div>
+
             </div>
 
             <div class="row">
@@ -126,7 +121,16 @@
                     <input name="Complemento" id="Complemento" ng-model="bos.mComplemento" class="form-control" />
                 </div>
             </div>
-            
+
+            <div ng-show="bos.mAnfitriao.multipleSelect.length" class="row">
+                <label class="control-label col-md-1">Anfitrião:</label>
+                <div class="col-md-6">
+                    <select class="form-control" name="Anfitriao" id="Anfitriao" ng-model="bos.mAnfitriao.singleSelect">
+                        <option ng-repeat="option in  bos.mAnfitriao.multipleSelect" value="{{option.id}}">{{option.name}}</option>
+                    </select>
+                </div>
+            </div>
+
             <p>
                 <input type="button" ng-click="bos.Salvar()" value="Salvar" class="btn  btn-default" />
             </p>
