@@ -19,6 +19,21 @@ app.controller('ClienteController', ['$http', function($http) {
         singleSelect: null,
         multipleSelect: [],
     };
+
+    store.mTipoPele = {
+        singleSelect: null,
+        multipleSelect: [],
+    };
+
+    store.mTomPele = {
+        singleSelect: null,
+        multipleSelect: [],
+    };
+
+    store.mFormaContato = {
+        singleSelect: null,
+        multipleSelect: [],
+    };
     
     store.mNome = "";
     store.mData = null;
@@ -36,10 +51,30 @@ app.controller('ClienteController', ['$http', function($http) {
         store.mPais.singleSelect = { "id": 2, "name": "Japão" };
     };
 
-   
+  
+    store.getFormaContato = function() {
+        $http.get(window.urlAbsoluteUri + "Cliente/FormaContato").success(function (data) {
+            store.mFormaContato.multipleSelect = data;
+        });
+    };
 
+    store.getTipoPele = function () {
+        $http.get(window.urlAbsoluteUri + "Cliente/TipoPele").success(function (data) {
+            store.mTipoPele.multipleSelect = data;
+            store.getTomPele();
+        });
+    };
+    
+    store.getTomPele = function () {
+        $http.get(window.urlAbsoluteUri + "Cliente/TomPele").success(function (data) {
+            store.mTomPele.multipleSelect = data;
+        });
+    };
+    
     $http.get(window.urlAbsoluteUri + "Cliente/Paiz").success(function(data) {
         store.mPais.multipleSelect = data;
+        store.getTipoPele();
+       
     });
 
     store.getEstados = function(id) {
@@ -70,6 +105,7 @@ app.controller('ClienteController', ['$http', function($http) {
         Cliente.Endereco.Pais.Id = store.mPais.singleSelect;
         Cliente.Endereco.Estado.Id = store.mEstado.singleSelect;
         Cliente.Endereco.Cidade.Id = store.mCidade.singleSelect;
+        Cliente.FormaContato.Id = store.mFormaContato.singleSelect;
         Cliente.Endereco.Bairro = store.mBairro;
         Cliente.Endereco.Logradouro = store.mLogradouro;
         Cliente.Endereco.Cep = store.mCep;
@@ -84,7 +120,8 @@ app.controller('ClienteController', ['$http', function($http) {
         if (store.mAnfitriao.singleSelect != null) {
          Cliente.Anfitriao.Id = store.mAnfitriao.singleSelect;
         }
-        
+        Cliente.TomDePele.Id = store.mTomPele.singleSelect;
+        Cliente.TipoPele.Id = store.mTipoPele.singleSelect;
         Cliente.Horario = store.mHorario;
         
         $http(salvar);
@@ -99,6 +136,9 @@ app.controller('ClienteController', ['$http', function($http) {
         store.mCidade.multipleSelect = [];
         store.mAnfitriao.multipleSelect = [];
         store.mAnfitriao.singleSelect = null;
+        store.mTipoPele.singleSelect = null;
+        store.mFormaContato.singleSelect = null;
+        store.mTomPele.singleSelect = null;
         store.mNome = "";
         store.mData = null;
         store.mEmail = "";
@@ -127,9 +167,13 @@ var Cliente = {
     Celular: null,
     TipoPele: null,
     TomDePele: null,
-    FormaContato: null,
     Anfitriao: null
- };
+};
+
+Cliente.FormaContato = {
+    Id: null,
+    Descricao: null
+};
 
 Cliente.Endereco = {
     Id: null,

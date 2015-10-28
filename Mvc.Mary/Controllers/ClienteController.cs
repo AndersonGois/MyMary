@@ -28,6 +28,21 @@ namespace Mvc.Mary.Controllers
             return Json( _clienteFacade.GetPaizSelect(), JsonRequestBehavior.AllowGet);
         }
 
+        public  ActionResult FormaContato()
+        {
+            return Json(_clienteFacade.GetFormaContato(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult TipoPele()
+        {
+            return Json(_clienteFacade.GetTipoPele(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult TomPele()
+        {
+            return Json(_clienteFacade.GetTomPele(), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Estados(int id)
         {
             return Json(_clienteFacade.GetEstadosPorPaizSelect(id), JsonRequestBehavior.AllowGet);

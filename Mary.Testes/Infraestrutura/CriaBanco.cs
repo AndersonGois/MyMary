@@ -47,13 +47,31 @@ namespace Mary.Testes.Infraestrutura
         public void BInsertTomDePele()
         {
             var tomDePeleRepo = new TomDePeleRepository();
-            var tomDePele = new TomDePele { Descricao = "Ivory" };
+            var tomDePele = new TomDePele { Descricao = "Ivory",Numero = 1};
             tomDePeleRepo.Salvar(tomDePele);
 
-            tomDePele = new TomDePele { Descricao = "Beige" };
+            tomDePele = new TomDePele { Descricao = "Ivory", Numero = 2 };
             tomDePeleRepo.Salvar(tomDePele);
 
-            tomDePele = new TomDePele { Descricao = "Bronze" };
+            tomDePele = new TomDePele { Descricao = "Ivory", Numero = 3 };
+            tomDePeleRepo.Salvar(tomDePele);
+
+            tomDePele = new TomDePele { Descricao = "Beige" ,Numero = 1};
+            tomDePeleRepo.Salvar(tomDePele);
+
+            tomDePele = new TomDePele { Descricao = "Beige", Numero = 2 };
+            tomDePeleRepo.Salvar(tomDePele);
+
+            tomDePele = new TomDePele { Descricao = "Beige", Numero = 3 };
+            tomDePeleRepo.Salvar(tomDePele);
+
+            tomDePele = new TomDePele { Descricao = "Bronze",Numero = 1};
+            tomDePeleRepo.Salvar(tomDePele);
+
+            tomDePele = new TomDePele { Descricao = "Bronze", Numero = 2 };
+            tomDePeleRepo.Salvar(tomDePele);
+
+            tomDePele = new TomDePele { Descricao = "Bronze", Numero = 3 };
             tomDePeleRepo.Salvar(tomDePele);
 
           

@@ -10,10 +10,8 @@ namespace Facade
         
         public void Salvar(Cliente cliente)
         {
-            if (cliente.Anfitriao.Id == 0)
-                cliente.Anfitriao = null;
-
-            (new ClienteRepository()).Salvar(cliente);
+            
+            (new ClienteRepository()).SalvarCliente(cliente);
         }
 
         public IEnumerable GetTodosClientesSelect()
@@ -36,9 +34,26 @@ namespace Facade
             return (new EstadosRepository()).EstadosPorPais(id).Select(x => new { id = x.Id, name = x.Descricao });
         }
 
+
+        public IEnumerable GetFormaContato()
+        {
+
+            return (new FormaContatoRepository()).ListaFormaContatos().Select(x => new { id = x.Id, name = x.Descricao });
+        }
+
         public IEnumerable GetCidadesPorEstadoSelect(int id)
         {
             return (new CidadeRepository()).CidadesPorEstado(id).Select(x => new { id = x.Id, name = x.Descricao });
+        }
+
+        public object GetTipoPele()
+        {
+            return (new TipoPeleRepository()).Todos<TipoPele>().Select(x => new { id = x.Id, name = x.Descricao });
+        }
+
+        public object GetTomPele()
+        {
+            return (new TomDePeleRepository()).Todos<TomDePele>().Select(x => new { id = x.Id, name = x.Descricao +" "+ x.Numero });
         }
     }
 }

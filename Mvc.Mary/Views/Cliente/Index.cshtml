@@ -29,45 +29,35 @@
     <div ng-controller="ClienteController as bos" class="container">
         <form name="myForm" class="form-horizontal css-form"  novalidate >
             <h1 class="h4">Cadastro de clientes</h1>
-
             <div class="row">
-                <label class="control-label col-md-1">Nome:</label>
-                <div class=" col-md-8">
-                    <input name="Nome" class="form-control" id="Nome" ng-model="bos.mNome"  required />
+                <div class=" col-md-5">
+                    <label class="control-label">Nome:</label>
+                    <input name="Nome" class="form-control" id="Nome" ng-model="bos.mNome" required />
                 </div>
-            </div>
-
-            <div class="row">
-                <label class="control-label col-md-1">Email:</label>
-                <div class=" col-md-6">
+                <div class=" col-md-5">
+                    <label class="control-label">Email:</label>
                     <input name="Email" id="Email" ng-model="bos.mEmail" type="email" class="form-control" required />
                 </div>
-                <label class="control-label col-md-1">Data:</label>
                 <div class="col-md-2">
-                    <input name="Data" id="Data"  ng-model="bos.mData" class="form-control"  required  size="3"/>
+                    <label class="control-label">Data:</label>
+                    <input name="Data" id="Data" ng-model="bos.mData" class="form-control" required size="3" />
                 </div>
             </div>
-
             <div class="row">
-                <label class="control-label col-md-1">Nascimento:</label>
                 <div class="col-md-2">
+                    <label class="control-label">Nascimento:</label>
                     <input name="Nascimento" id="Nascimento" ng-model="bos.mNascimento" class="form-control" required />
                 </div>
-                <label class="control-label col-md-1">Telefone:</label>
                 <div class=" col-md-3">
-                    <input name="Telefone" type="number" id="Telefone" ng-model="bos.mTelefone" class="form-control"  required/>
+                    <label class="control-label">Telefone:</label>
+                    <input name="Telefone" type="tel" id="Telefone" ng-model="bos.mTelefone" class="form-control" required />
                 </div>
-
-
-                <label class="control-label col-md-1">Celular:</label>
                 <div class="col-md-3">
-                    <input name="Celular" id="Celular"   ng-model="bos.mCelular" class="form-control" />
+                    <label class="control-label">Celular:</label>
+                    <input name="Celular" id="Celular" ng-model="bos.mCelular" class="form-control" />
                 </div>
-            </div>
-
-            <div class="row">
-                <label class="control-label col-md-1">Horário:</label>
-                <div class="col-md-3">
+                   <div class="col-md-3">
+                    <label class="control-label">Melhor Horário:</label><br/>
                     <label class="control-label radio-inline">
                         <input type="radio" name="Horario" value="M" ng-model="bos.mHorario" />Manha</label>
                     <label class="control-label radio-inline">
@@ -75,78 +65,90 @@
                     <label class="control-label radio-inline">
                         <input type="radio" name="Horario" value="N" ng-model="bos.mHorario" />Noite</label>
                 </div>
-
             </div>
-
             <div class="row">
-                <label class="control-label col-md-1">Pais:</label>
-                <div class=" col-md-2">
+             
+                <div class=" col-md-3">
+                    <label class="control-label">Pais:</label>
                     <select name="mPais" id="mPais" class="form-control" ng-change="bos.getEstados(bos.mPais.singleSelect)" ng-model="bos.mPais.singleSelect">
                         <option ng-repeat="option in  bos.mPais.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
-
-
-                <div ng-show="bos.mEstado.multipleSelect.length">
-                    <label class="control-label col-md-1">Estado:</label>
-                    <div class=" col-md-3">
-                        <select name="estadoId" class="form-control" id="estadoId" ng-model="bos.mEstado.singleSelect" ng-change="bos.getCidades(bos.mEstado.singleSelect)">
-                            <option ng-repeat="option in bos.mEstado.multipleSelect" value="{{option.id}}">{{option.name}}</option>
-                        </select>
-                    </div>
+                <div class=" col-md-3">
+                    <label class="control-label">Estado:</label>
+                    <select name="estadoId" class="form-control" id="estadoId" ng-model="bos.mEstado.singleSelect" ng-change="bos.getCidades(bos.mEstado.singleSelect)">
+                        <option ng-repeat="option in bos.mEstado.multipleSelect" value="{{option.id}}">{{option.name}}</option>
+                    </select>
                 </div>
-                <div ng-show="bos.mCidade.multipleSelect.length">
-                    <label class="control-label col-md-1">Cidade:</label>
-                    <div class=" col-md-3">
-                        <select name="cidadeId" class="form-control" ng-change="bos.getAnfitriao()" id="CidadeID" ng-model="bos.mCidade.singleSelect">
-                            <option ng-repeat="option in bos.mCidade.multipleSelect" value="{{option.id}}">{{option.name}}</option>
-                        </select>
-                    </div>
+                @*<div ng-show="bos.mCidade.multipleSelect.length">*@
+                <div class=" col-md-3">
+                    <label class="control-label">Cidade:</label>
+                    <select name="cidadeId" class="form-control" ng-change="bos.getAnfitriao()" id="CidadeID" ng-model="bos.mCidade.singleSelect">
+                        <option ng-repeat="option in bos.mCidade.multipleSelect" value="{{option.id}}">{{option.name}}</option>
+                    </select>
                 </div>
-            </div>
-
-            <div class="row">
-                <label class="control-label col-md-1">Bairro:</label>
-                <div class=" col-md-4">
+                @*</div>*@
+                 <div class=" col-md-3">
+                    <label class="control-label">Bairro:</label>
                     <input name="Bairro" id="Bairro" ng-model="bos.mBairro" class="form-control" />
                 </div>
-
-                <label class="control-label col-sm-1">Cep:</label>
-                <div class=" col-sm-4">
+            </div>
+            <div class="row">
+               
+                <div class=" col-md-2">
+                    <label class="control-label ">Cep:</label>
                     <input name="Cep" id="Cep" ng-model="bos.mCep" class="form-control" />
                 </div>
-            </div>
-
-            <div class="row">
-                <label class="control-label col-md-1">Logradouro:</label>
-                <div class=" col-md-8">
+       
+                <div class=" col-md-6">
+                    <label class="control-label">Logradouro:</label>
                     <input name="Logradouro" id="Logradouro" ng-model="bos.mLogradouro" class="form-control" />
                 </div>
-            </div>
-
-            <div class="row">
-                <label class="control-label col-md-1">Numero:</label>
-                <div class=" col-md-4">
+           
+                <div class=" col-md-1">
+                    <label class="control-label">Numero:</label>
                     <input name="Numero" id="Numero" ng-model="bos.mNumero" class="form-control" />
                 </div>
-                <label class="control-label col-md-1">Complemento:</label>
-                <div class=" col-md-4">
+                <div class=" col-md-3">
+                    <label class="control-label">Complemento:</label>
                     <input name="Complemento" id="Complemento" ng-model="bos.mComplemento" class="form-control" />
                 </div>
             </div>
-
-            <div ng-show="bos.mAnfitriao.multipleSelect.length" class="row">
-                <label class="control-label col-md-1">Anfitrião:</label>
+            <div class="row">
                 <div class="col-md-6">
-                    <select class="form-control" name="Anfitriao" id="Anfitriao" ng-model="bos.mAnfitriao.singleSelect">
-                        <option ng-repeat="option in  bos.mAnfitriao.multipleSelect" value="{{option.id}}">{{option.name}}</option>
+                    <label class="control-label">Tipo de Pele:</label>
+                    <select class="form-control" ng-load="bos.getTipoPele()" name="TipoPele" id="TipoPele" ng-model="bos.mTipoPele.singleSelect">
+                        <option ng-repeat="option in  bos.mTipoPele.multipleSelect" value="{{option.id}}">{{option.name}}</option>
+                    </select>
+                </div>
+            <div class="col-md-6">
+                    <label class="control-label">Tom de Pele:</label>
+                    <select class="form-control" ng-load="bos.getTomPele()" name="TomPele" id="TomPele" ng-model="bos.mTomPele.singleSelect">
+                        <option ng-repeat="option in  bos.mTomPele.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
             </div>
-
-            <p>
-                <input type="button" ng-click="bos.Salvar()" value="Salvar" class="btn  btn-default" />
-            </p>
+            <div  class="row">
+                <div class="col-md-6">
+                    <label class="control-label">Anfitrião:</label>
+                    <select class="form-control" ng-change="bos.getFormaContato()" name="Anfitriao" id="Anfitriao" ng-model="bos.mAnfitriao.singleSelect">
+                        <option ng-repeat="option in  bos.mAnfitriao.multipleSelect" value="{{option.id}}">{{option.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label">Forma Contato:</label>
+                    <select class="form-control" name="FormaContato" id="FormaContato" ng-model="bos.mFormaContato.singleSelect">
+                        <option ng-repeat="option in bos.mFormaContato.multipleSelect" value="{{option.id}}">{{option.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                     <label class="control-label">&nbsp;</label>
+                    <p>
+                        <input type="button" ng-click="bos.Salvar()" value="Salvar" class="btn  btn-danger" />
+                    </p>
+                </div>
+            </div>
+            
         </form> 
     </div>
 }
