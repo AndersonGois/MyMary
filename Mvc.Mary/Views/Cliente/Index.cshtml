@@ -7,48 +7,61 @@
 }
 
 <h2></h2>
+<script type="text/javascript">
+    $(function() {
+        $("#Data").datepicker($.datepicker.regional["pt-BR"]);
+        $("#Data").show();
+    });
+</script>
+<style type="text/css">
+  .css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
 
-
+  .css-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+</style>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
     <div ng-controller="ClienteController as bos" class="container">
-        <form name="myForm" class="form-horizontal">
+        <form name="myForm" class="form-horizontal css-form" onsubmit="bos.Salvar()" novalidate >
             <h1 class="h4">Cadastro de clientes</h1>
 
             <div class="row">
                 <label class="control-label col-md-1">Nome:</label>
                 <div class=" col-md-8">
-                    <input name="Nome" class="form-control" id="Nome" ng-model="bos.mNome"  required ng-pattern="bos.myRegex" />
+                    <input name="Nome" class="form-control" id="Nome" ng-model="bos.mNome"  required ng-pattern="bos.myRegex" required/>
                 </div>
             </div>
 
             <div class="row">
                 <label class="control-label col-md-1">Email:</label>
                 <div class=" col-md-6">
-                    <input name="Email" id="Email" ng-model="bos.mEmail" class="form-control" />
+                    <input name="Email" id="Email" ng-model="bos.mEmail" type="email" class="form-control" required />
                 </div>
                 <label class="control-label col-md-1">Data:</label>
                 <div class="col-md-2">
-                    <input name="Data" id="Data" ng-model="bos.mData" class="form-control" />
+                    <input name="Data" id="Data"  ng-model="bos.mData" class="form-control"  required  size="3"/>
                 </div>
             </div>
 
             <div class="row">
                 <label class="control-label col-md-1">Nascimento:</label>
                 <div class="col-md-2">
-                    <input name="Nascimento" id="Nascimento" ng-model="bos.mNascimento" class="form-control" />
+                    <input name="Nascimento" id="Nascimento" ng-model="bos.mNascimento" class="form-control" required />
                 </div>
                 <label class="control-label col-md-1">Telefone:</label>
                 <div class=" col-md-3">
-                    <input name="Telefone" id="Telefone" ng-model="bos.mTelefone" class="form-control" />
+                    <input name="Telefone" type="number" id="Telefone" ng-model="bos.mTelefone" class="form-control"  required/>
                 </div>
 
 
                 <label class="control-label col-md-1">Celular:</label>
                 <div class="col-md-3">
-                    <input name="Celular" id="Celular" ng-model="bos.mCelular" class="form-control" />
+                    <input name="Celular" id="Celular"   ng-model="bos.mCelular" class="form-control" />
                 </div>
             </div>
 
@@ -132,11 +145,11 @@
             </div>
 
             <p>
-                <input type="button" ng-click="bos.Salvar()" value="Salvar" class="btn  btn-default" />
+                <input type="submit" ng-click="myForm.$valid" value="Salvar" class="btn  btn-default" />
             </p>
-        </form>
+        </form> 
     </div>
 }
-
+@**@
 
 

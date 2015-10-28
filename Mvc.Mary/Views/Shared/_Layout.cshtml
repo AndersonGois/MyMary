@@ -2,26 +2,30 @@
 <html ng-app="mary">
 <head>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    
 
-     <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
- 
+
 </head>
-    <body>
-        <div class="container" style="background: gainsboro;padding: 10px 10px" >
+<body>
+    <div class="container" style="background: gainsboro; padding: 10px 10px">
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
         @RenderBody()
-            </div>
-    </body>  
-    <script type="text/javascript">
+    </div>
+</body>
+<script type="text/javascript">
     window.urlAbsoluteUri = "@Request.Url.AbsoluteUri";
-   </script>
-    <script src="~/Scripts/jquery-1.9.1.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
- 
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/app/ClienteModule.js"></script>
-    <script src="~/Scripts/app/app.js"></script>
+</script>
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/datepicker-pt-BR.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/app/ClienteModule.js"></script>
+<script src="~/Scripts/app/app.js"></script>
 </html>

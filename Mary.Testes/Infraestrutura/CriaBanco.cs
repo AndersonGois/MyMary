@@ -148,7 +148,7 @@ namespace Mary.Testes.Infraestrutura
         public void CInsertCliente()
         {
             var clienteRepo = new ClienteRepository();
-            var cliente = new Cliente { DataNascimento = new DateTime(1976, 9, 20), Nome = "Rejane", Data = DateTime.Now, Email = "rejaneeanderspn@gmail.com" ,Horario = 'M'};
+            var cliente = new Cliente { DataNascimento = new DateTime(1977, 5, 30), Nome = "Rejane", Data = DateTime.Now, Email = "rejaneeanderspn@gmail.com" ,Horario = 'M'};
 
             var cidaderepo = new CidadeRepository();
             var cidade = cidaderepo.Todos<Cidade>().FirstOrDefault();
@@ -173,7 +173,7 @@ namespace Mary.Testes.Infraestrutura
                 Pais = cidade.Estado.Pais
             };
 
-            var cliente2 = new Cliente { DataNascimento = new DateTime(1976, 9, 20), Nome = "Rejane", Data = DateTime.Now, Email = "rejaneeanderspn@gmail.com", Horario = 'M' };
+            var cliente2 = new Cliente { DataNascimento = new DateTime(1976, 9, 20), Nome = "Anderson", Data = DateTime.Now, Email = "agoisrj@gmail.com", Horario = 'M' };
             cliente.Endereco = endereco;
 
             cliente.AdicionarTelefone(cliente2);

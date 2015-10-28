@@ -35,31 +35,31 @@ app.controller('ClienteController', ['$http', function($http) {
         store.mPais.singleSelect = { "id": 2, "name": "Japão" };
     };
 
-    $http.get(window.urlAbsoluteUri + "/Cliente/Paiz").success(function(data) {
+    $http.get(window.urlAbsoluteUri + "Cliente/Paiz").success(function(data) {
         store.mPais.multipleSelect = data;
     });
 
     store.getEstados = function(id) {
-        $http.get(window.urlAbsoluteUri + "/Cliente/Estados/" + id).success(function(data) {
+        $http.get(window.urlAbsoluteUri + "Cliente/Estados/" + id).success(function(data) {
             store.mEstado.multipleSelect = data;
         });
     };
 
     store.getAnfitriao = function(id) {
-        $http.get(window.urlAbsoluteUri + "/Cliente/Anfitrioes/" + id).success(function(data) {
+        $http.get(window.urlAbsoluteUri + "Cliente/Anfitrioes/" + id).success(function(data) {
             store.mAnfitriao.multipleSelect = data;
         });
     };
 
     store.getCidades = function(id) {
-        $http.get(window.urlAbsoluteUri + "/Cliente/Cidades/" + id).success(function(data) {
+        $http.get(window.urlAbsoluteUri + "Cliente/Cidades/" + id).success(function(data) {
             store.mCidade.multipleSelect = data;
         });
     };
 
     var salvar = {
         method: 'POST',
-        url: window.urlAbsoluteUri + '/Cliente/Salvar/',
+        url: window.urlAbsoluteUri + 'Cliente/Salvar/',
         data: { Cliente: Cliente }
     };
 
@@ -152,4 +152,5 @@ Cliente.TipoPele = {
 Cliente.TomDePele = {
     Id: null,
     Descricao: null
- };
+};
+

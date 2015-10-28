@@ -31,57 +31,57 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
-      <HintPath>E:\Mary\SolutionMary\Lib\Castle.Core.dll</HintPath>
+      <HintPath>..\Lib\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v10.1">
-      <HintPath>E:\Mary\SolutionMary\Lib\DevExpress.Data.v10.1.dll</HintPath>
+      <HintPath>..\Lib\DevExpress.Data.v10.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxEditors.v10.1">
-      <HintPath>E:\Mary\SolutionMary\Lib\DevExpress.Web.ASPxEditors.v10.1.dll</HintPath>
+      <HintPath>..\Lib\DevExpress.Web.ASPxEditors.v10.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxThemes.v10.1">
-      <HintPath>E:\Mary\SolutionMary\Lib\DevExpress.Web.ASPxThemes.v10.1.dll</HintPath>
+      <HintPath>..\Lib\DevExpress.Web.ASPxThemes.v10.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.v10.1">
-      <HintPath>E:\Mary\SolutionMary\Lib\DevExpress.Web.v10.1.dll</HintPath>
+      <HintPath>..\Lib\DevExpress.Web.v10.1.dll</HintPath>
     </Reference>
     <Reference Include="FluentNHibernate">
-      <HintPath>E:\Mary\SolutionMary\Lib\FluentNHibernate.dll</HintPath>
+      <HintPath>..\Lib\FluentNHibernate.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections">
-      <HintPath>E:\Mary\SolutionMary\Lib\Iesi.Collections.dll</HintPath>
+      <HintPath>..\Lib\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>E:\Mary\SolutionMary\Lib\log4net.dll</HintPath>
+      <HintPath>..\Lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="msmdvbanet">
-      <HintPath>E:\Mary\SolutionMary\Lib\msmdvbanet.dll</HintPath>
+      <HintPath>..\Lib\msmdvbanet.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
-      <HintPath>E:\Mary\SolutionMary\Lib\NHibernate.dll</HintPath>
+      <HintPath>..\Lib\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.ByteCode.Castle">
-      <HintPath>E:\Mary\SolutionMary\Lib\NHibernate.ByteCode.Castle.dll</HintPath>
+      <HintPath>..\Lib\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.LambdaExtensions">
-      <HintPath>E:\Mary\SolutionMary\Lib\NHibernate.LambdaExtensions.dll</HintPath>
+      <HintPath>..\Lib\NHibernate.LambdaExtensions.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>E:\Mary\SolutionMary\Lib\nunit.framework.dll</HintPath>
+      <HintPath>..\Lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.DataAccess">
-      <HintPath>E:\Mary\SolutionMary\Lib\Oracle.DataAccess.dll</HintPath>
+      <HintPath>..\Lib\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="PostSharp">
-      <HintPath>E:\Mary\SolutionMary\Lib\PostSharp.dll</HintPath>
+      <HintPath>..\Lib\PostSharp.dll</HintPath>
     </Reference>
     <Reference Include="Rhino.Mocks">
-      <HintPath>E:\Mary\SolutionMary\Lib\Rhino.Mocks.dll</HintPath>
+      <HintPath>..\Lib\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
-      <HintPath>E:\Mary\SolutionMary\Lib\System.Data.SQLite.dll</HintPath>
+      <HintPath>..\Lib\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
