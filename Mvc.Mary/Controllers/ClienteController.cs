@@ -40,6 +40,8 @@ namespace Mvc.Mary.Controllers
 
         public ActionResult Salvar(Cliente cliente)
         {
+            _clienteFacade.Salvar(cliente);
+
             return Json(_clienteFacade.GetPaizSelect(), JsonRequestBehavior.AllowGet);
         }
 

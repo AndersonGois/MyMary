@@ -19,6 +19,7 @@ app.controller('ClienteController', ['$http', function($http) {
         singleSelect: null,
         multipleSelect: [],
     };
+    
     store.mNome = "";
     store.mData = null;
     store.mEmail = "";
@@ -34,6 +35,8 @@ app.controller('ClienteController', ['$http', function($http) {
     store.forceUnknownOption = function() {
         store.mPais.singleSelect = { "id": 2, "name": "Japão" };
     };
+
+   
 
     $http.get(window.urlAbsoluteUri + "Cliente/Paiz").success(function(data) {
         store.mPais.multipleSelect = data;
@@ -68,6 +71,7 @@ app.controller('ClienteController', ['$http', function($http) {
         Cliente.Endereco.Estado.Id = store.mEstado.singleSelect;
         Cliente.Endereco.Cidade.Id = store.mCidade.singleSelect;
         Cliente.Endereco.Bairro = store.mBairro;
+        Cliente.Endereco.Logradouro = store.mLogradouro;
         Cliente.Endereco.Cep = store.mCep;
         Cliente.Endereco.Numero = store.mNumero;
         Cliente.Endereco.Complemento = store.mComplemento;
@@ -77,7 +81,10 @@ app.controller('ClienteController', ['$http', function($http) {
         Cliente.Email = store.mEmail;
         Cliente.Nome = store.mNome;
         Cliente.Telefone = store.mTelefone;
-        Cliente.Anfitriao.Id = store.mAnfitriao.singleSelect;
+        if (store.mAnfitriao.singleSelect != null) {
+         Cliente.Anfitriao.Id = store.mAnfitriao.singleSelect;
+        }
+        
         Cliente.Horario = store.mHorario;
         
         $http(salvar);
@@ -88,8 +95,22 @@ app.controller('ClienteController', ['$http', function($http) {
 
     function limpar() {
         store.mPais.singleSelect = null;
-        store.mEstado.singleSelect = null;
-        store.mCidade.singleSelect = null;
+        store.mEstado.multipleSelect = [];
+        store.mCidade.multipleSelect = [];
+        store.mAnfitriao.multipleSelect = [];
+        store.mAnfitriao.singleSelect = null;
+        store.mNome = "";
+        store.mData = null;
+        store.mEmail = "";
+        store.mNascimento = "";
+        store.mTelefone = "";
+        store.mCelular = "";
+        store.mHorario = "";
+        store.mBairro = "";
+        store.mCep = "";
+        store.mLogradouro = "";
+        store.mNumero = "";
+        store.mComplemento = "";
     }
 
 }]);

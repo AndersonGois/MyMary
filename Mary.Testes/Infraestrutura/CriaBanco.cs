@@ -144,7 +144,7 @@ namespace Mary.Testes.Infraestrutura
         }
 
         [Test]
-        //[Ignore]
+        [Ignore]
         public void CInsertCliente()
         {
             var clienteRepo = new ClienteRepository();
@@ -176,7 +176,7 @@ namespace Mary.Testes.Infraestrutura
             var cliente2 = new Cliente { DataNascimento = new DateTime(1976, 9, 20), Nome = "Anderson", Data = DateTime.Now, Email = "agoisrj@gmail.com", Horario = 'M' };
             cliente.Endereco = endereco;
 
-            cliente.AdicionarTelefone(cliente2);
+          
             clienteRepo.Salvar(cliente);
         }
 

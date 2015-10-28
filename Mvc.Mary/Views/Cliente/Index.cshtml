@@ -27,13 +27,13 @@
 {
     @Html.ValidationSummary(true)
     <div ng-controller="ClienteController as bos" class="container">
-        <form name="myForm" class="form-horizontal css-form" onsubmit="bos.Salvar()" novalidate >
+        <form name="myForm" class="form-horizontal css-form"  novalidate >
             <h1 class="h4">Cadastro de clientes</h1>
 
             <div class="row">
                 <label class="control-label col-md-1">Nome:</label>
                 <div class=" col-md-8">
-                    <input name="Nome" class="form-control" id="Nome" ng-model="bos.mNome"  required ng-pattern="bos.myRegex" required/>
+                    <input name="Nome" class="form-control" id="Nome" ng-model="bos.mNome"  required />
                 </div>
             </div>
 
@@ -145,7 +145,7 @@
             </div>
 
             <p>
-                <input type="submit" ng-click="myForm.$valid" value="Salvar" class="btn  btn-default" />
+                <input type="button" ng-click="bos.Salvar()" value="Salvar" class="btn  btn-default" />
             </p>
         </form> 
     </div>

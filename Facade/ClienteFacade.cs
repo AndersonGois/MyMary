@@ -8,8 +8,11 @@ namespace Facade
     public class ClienteFacade
     {
         
-        public void Salvar(ClienteView cliente)
+        public void Salvar(Cliente cliente)
         {
+            if (cliente.Anfitriao.Id == 0)
+                cliente.Anfitriao = null;
+
             (new ClienteRepository()).Salvar(cliente);
         }
 
