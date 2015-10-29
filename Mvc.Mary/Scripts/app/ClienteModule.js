@@ -1,97 +1,100 @@
 ﻿/// <reference path="app.js" />
 var app = angular.module("ClienteModule", []);
-app.controller('ClienteController', ['$http', function($http) {
-    var store = this;
-    store.myRegex = /[0-9]{2}/;
-    store.mPais = {
-        singleSelect: null,
-        multipleSelect: [],
-    };
-    store.mEstado = {
-        singleSelect: null,
-        multipleSelect: [],
-    };
-    store.mCidade = {
-        singleSelect: null,
-        multipleSelect: [],
-    };
-    store.mAnfitriao = {
-        singleSelect: null,
-        multipleSelect: [],
-    };
+app.controller('ClienteController', function ($scope, $http) {
 
-    store.mTipoPele = {
-        singleSelect: null,
-        multipleSelect: [],
-    };
-
-    store.mTomPele = {
-        singleSelect: null,
-        multipleSelect: [],
-    };
-
-    store.mFormaContato = {
+    $scope.myRegex = /[0-9]{2}/;
+    $scope.mPais = {
         singleSelect: null,
         multipleSelect: [],
     };
     
-    store.mNome = "";
-    store.mData = null;
-    store.mEmail = "";
-    store.mNascimento = "";
-    store.mTelefone = "";
-    store.mCelular = "";
-    store.mHorario = "";
-    store.mBairro = "";
-    store.mCep = "";
-    store.mLogradouro = "";
-    store.mNumero = "";
-    store.mComplemento = "";
-    store.forceUnknownOption = function() {
-        store.mPais.singleSelect = { "id": 2, "name": "Japão" };
+    $scope.mEstado = {
+        singleSelect: null,
+        multipleSelect: [],
+    };
+    
+    $scope.mCidade = {
+        singleSelect: null,
+        multipleSelect: [],
+    };
+    
+    $scope.mAnfitriao = {
+        singleSelect: null,
+        multipleSelect: [],
+    };
+
+    $scope.mTipoPele = {
+        singleSelect: null,
+        multipleSelect: [],
+    };
+
+    $scope.mTomPele = {
+        singleSelect: null,
+        multipleSelect: [],
+    };
+
+    $scope.mFormaContato = {
+        singleSelect: null,
+        multipleSelect: [],
+    };
+    
+    $scope.mNome = "";
+    $scope.mData = null;
+    $scope.mEmail = "";
+    $scope.mNascimento = "";
+    $scope.mTelefone = "";
+    $scope.mCelular = "";
+    $scope.mHorario = "";
+    $scope.mBairro = "";
+    $scope.mCep = "";
+    $scope.mLogradouro = "";
+    $scope.mNumero = "";
+    $scope.mComplemento = "";
+    $scope.forceUnknownOption = function() {
+        $scope.mPais.singleSelect = { "id": 2, "name": "Japão" };
     };
 
   
-    store.getFormaContato = function() {
+    $scope.getFormaContato = function() {
         $http.get(window.urlAbsoluteUri + "Cliente/FormaContato").success(function (data) {
-            store.mFormaContato.multipleSelect = data;
+            $scope.mFormaContato.multipleSelect = data;
         });
     };
 
-    store.getTipoPele = function () {
+    $scope.getTipoPele = function () {
         $http.get(window.urlAbsoluteUri + "Cliente/TipoPele").success(function (data) {
-            store.mTipoPele.multipleSelect = data;
-            store.getTomPele();
+            $scope.mTipoPele.multipleSelect = data;
+            $scope.getTomPele();
         });
     };
     
-    store.getTomPele = function () {
+    $scope.getTomPele = function () {
         $http.get(window.urlAbsoluteUri + "Cliente/TomPele").success(function (data) {
-            store.mTomPele.multipleSelect = data;
+            $scope.mTomPele.multipleSelect = data;
         });
     };
     
     $http.get(window.urlAbsoluteUri + "Cliente/Paiz").success(function(data) {
-        store.mPais.multipleSelect = data;
-        store.getTipoPele();
+        $scope.mPais.multipleSelect = data;
+        $scope.getTipoPele();
        
     });
 
-    store.getEstados = function(id) {
+    $scope.getEstados = function(id) {
         $http.get(window.urlAbsoluteUri + "Cliente/Estados/" + id).success(function(data) {
-            store.mEstado.multipleSelect = data;
+            $scope.mEstado.multipleSelect = data;
         });
     };
 
-    store.getAnfitriao = function(id) {
+    $scope.getAnfitriao = function(id) {
         $http.get(window.urlAbsoluteUri + "Cliente/Anfitrioes/" + id).success(function(data) {
-            store.mAnfitriao.multipleSelect = data;
+            $scope.mAnfitriao.multipleSelect = data;
         });
     };
 
-    store.getCidades = function(id) {
+    $scope.getCidades = function(id) {
         $http.get(window.urlAbsoluteUri + "Cliente/Cidades/" + id).success(function(data) {
-            store.mCidade.multipleSelect = data;
+            $scope.mCidade.multipleSelect = data;
         });
     };
 
@@ -101,28 +104,28 @@ app.controller('ClienteController', ['$http', function($http) {
         data: { Cliente: Cliente }
     };
 
-    store.Salvar = function() {
-        Cliente.Endereco.Pais.Id = store.mPais.singleSelect;
-        Cliente.Endereco.Estado.Id = store.mEstado.singleSelect;
-        Cliente.Endereco.Cidade.Id = store.mCidade.singleSelect;
-        Cliente.FormaContato.Id = store.mFormaContato.singleSelect;
-        Cliente.Endereco.Bairro = store.mBairro;
-        Cliente.Endereco.Logradouro = store.mLogradouro;
-        Cliente.Endereco.Cep = store.mCep;
-        Cliente.Endereco.Numero = store.mNumero;
-        Cliente.Endereco.Complemento = store.mComplemento;
-        Cliente.Celular = store.mCelular;
-        Cliente.Data = store.mData;
-        Cliente.DataNascimento = store.mNascimento;
-        Cliente.Email = store.mEmail;
-        Cliente.Nome = store.mNome;
-        Cliente.Telefone = store.mTelefone;
-        if (store.mAnfitriao.singleSelect != null) {
-         Cliente.Anfitriao.Id = store.mAnfitriao.singleSelect;
+    $scope.Salvar = function() {
+        Cliente.Endereco.Pais.Id = $scope.mPais.singleSelect;
+        Cliente.Endereco.Estado.Id = $scope.mEstado.singleSelect;
+        Cliente.Endereco.Cidade.Id = $scope.mCidade.singleSelect;
+        Cliente.FormaContato.Id = $scope.mFormaContato.singleSelect;
+        Cliente.Endereco.Bairro = $scope.mBairro;
+        Cliente.Endereco.Logradouro = $scope.mLogradouro;
+        Cliente.Endereco.Cep = $scope.mCep;
+        Cliente.Endereco.Numero = $scope.mNumero;
+        Cliente.Endereco.Complemento = $scope.mComplemento;
+        Cliente.Celular = $scope.mCelular;
+        Cliente.Data = $scope.mData;
+        Cliente.DataNascimento = $scope.mNascimento;
+        Cliente.Email = $scope.mEmail;
+        Cliente.Nome = $scope.mNome;
+        Cliente.Telefone = $scope.mTelefone;
+        if ($scope.mAnfitriao.singleSelect != null) {
+         Cliente.Anfitriao.Id = $scope.mAnfitriao.singleSelect;
         }
-        Cliente.TomDePele.Id = store.mTomPele.singleSelect;
-        Cliente.TipoPele.Id = store.mTipoPele.singleSelect;
-        Cliente.Horario = store.mHorario;
+        Cliente.TomDePele.Id = $scope.mTomPele.singleSelect;
+        Cliente.TipoPele.Id = $scope.mTipoPele.singleSelect;
+        Cliente.Horario = $scope.mHorario;
         
         $http(salvar);
         limpar();
@@ -131,29 +134,29 @@ app.controller('ClienteController', ['$http', function($http) {
     };
 
     function limpar() {
-        store.mPais.singleSelect = null;
-        store.mEstado.multipleSelect = [];
-        store.mCidade.multipleSelect = [];
-        store.mAnfitriao.multipleSelect = [];
-        store.mAnfitriao.singleSelect = null;
-        store.mTipoPele.singleSelect = null;
-        store.mFormaContato.singleSelect = null;
-        store.mTomPele.singleSelect = null;
-        store.mNome = "";
-        store.mData = null;
-        store.mEmail = "";
-        store.mNascimento = "";
-        store.mTelefone = "";
-        store.mCelular = "";
-        store.mHorario = "";
-        store.mBairro = "";
-        store.mCep = "";
-        store.mLogradouro = "";
-        store.mNumero = "";
-        store.mComplemento = "";
+        $scope.mPais.singleSelect = null;
+        $scope.mEstado.multipleSelect = [];
+        $scope.mCidade.multipleSelect = [];
+        $scope.mAnfitriao.multipleSelect = [];
+        $scope.mAnfitriao.singleSelect = null;
+        $scope.mTipoPele.singleSelect = null;
+        $scope.mFormaContato.singleSelect = null;
+        $scope.mTomPele.singleSelect = null;
+        $scope.mNome = "";
+        $scope.mData = null;
+        $scope.mEmail = "";
+        $scope.mNascimento = "";
+        $scope.mTelefone = "";
+        $scope.mCelular = "";
+        $scope.mHorario = "";
+        $scope.mBairro = "";
+        $scope.mCep = "";
+        $scope.mLogradouro = "";
+        $scope.mNumero = "";
+        $scope.mComplemento = "";
     }
 
-}]);
+});
 
 var Cliente = {
     Id: null,
