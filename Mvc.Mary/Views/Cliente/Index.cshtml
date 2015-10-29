@@ -6,62 +6,70 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style type="text/css">
+    
+    .ng-invalid.ng-touched{border-color: red}
+    .ng-valid.ng-touched{border-color: blue}
+</style>
+
 <h2></h2>
 <script type="text/javascript">
     $(function() {
         $("#Data").datepicker($.datepicker.regional["pt-BR"]);
+        $("#Nascimento").datepicker($.datepicker.regional["pt-BR"]);
+        
         $("#Data").show();
     });
 </script>
-<style type="text/css">
-  .css-form input.ng-invalid.ng-touched {
-    background-color: #FA787E;
-  }
+@*<style type="text/css">
+    .css-form input.ng-invalid.ng-touched {
+        background-color: #FA787E;
+    }
 
-  .css-form input.ng-valid.ng-touched {
-    background-color: #78FA89;
-  }
-</style>
+    .css-form input.ng-valid.ng-touched {
+        background-color: #78FA89;
+    }
+</style>*@
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
-    <div ng-controller="ClienteController" class="container">
-        <form name="myForm" class="form-horizontal css-form"  novalidate >
+
+ 
+    <div  class="container">
+        <form name="myForm" id="myForm" ng-controller="ClienteController" class="form-horizontal css-form"  novalidate >
             <h1 class="h4">Cadastro de clientes</h1>
             <div class="row">
                 <div class=" col-md-5">
+                     {{myForm.$valid}} 
                     <label class="control-label">Nome:</label>
-                    <input name="Nome" class="form-control" id="Nome" ng-model="mNome" required />
+                    <input name="Nome" class="form-control" id="Nome" ng-model="mNome" required  />
                 </div>
                 <div class=" col-md-5">
                     <label class="control-label">Email:</label>
-                    <input name="Email" id="Email" ng-model="mEmail" type="email" class="form-control" required />
+                    <input name="Email" id="Email" ng-model="mEmail" type="email" class="form-control" required  />
                 </div>
                 <div class="col-md-2">
                     <label class="control-label">Data:</label>
-                    <input name="Data" id="Data" ng-model="mData" class="form-control" required size="3" />
+                    <input name="Data" id="Data" ng-model="mData" class="form-control" required size="3" required  ng-pattern="regData"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2">
                     <label class="control-label">Nascimento:</label>
-                    <input name="Nascimento" id="Nascimento" ng-model="mNascimento" class="form-control" required />
+                    <input name="Nascimento" id="Nascimento" ng-model="mNascimento" class="form-control" ng-pattern="regData" />
                 </div>
                 <div class=" col-md-3">
                     <label class="control-label">Telefone:</label>
-                    <input name="Telefone" type="tel" id="Telefone" ng-model="mTelefone" class="form-control" required />
+                    <input name="Telefone" type="tel" id="Telefone" ng-model="mTelefone" class="form-control" ng-pattern="regTel"  />
                 </div>
                 <div class="col-md-3">
                     <label class="control-label">Celular:</label>
-                    <input name="Celular" id="Celular" ng-model="mCelular" class="form-control" />
+                    <input name="Celular" id="Celular" ng-model="mCelular" class="form-control" ng-pattern="regTel" />
                 </div>
                    <div class="col-md-3">
                     <label class="control-label">Melhor Horário:</label><br/>
                     <label class="control-label radio-inline">
-                        <input type="radio" name="Horario" value="M" ng-model="mHorario" />Manha</label>
+                        <input type="radio" name="Horario" value="M" ng-model="mHorario"  />Manha</label>
                     <label class="control-label radio-inline">
-                        <input type="radio" name="Horario" value="T" ng-model="mHorario" />Tarde</label>
+                        <input type="radio" name="Horario" value="T" ng-model="mHorario" checked="checked" />Tarde</label>
                     <label class="control-label radio-inline">
                         <input type="radio" name="Horario" value="N" ng-model="mHorario" />Noite</label>
                 </div>
@@ -70,44 +78,44 @@
              
                 <div class=" col-md-3">
                     <label class="control-label">Pais:</label>
-                    <select name="mPais" id="mPais" class="form-control" ng-change="getEstados(mPais.singleSelect)" ng-model="mPais.singleSelect">
+                    <select name="mPais" id="mPais" class="form-control" ng-change="getEstados(mPais.singleSelect)" ng-model="mPais.singleSelect" required>
                         <option ng-repeat="option in  mPais.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
                 <div class=" col-md-3">
                     <label class="control-label">Estado:</label>
-                    <select name="estadoId" class="form-control" id="estadoId" ng-model="mEstado.singleSelect" ng-change="getCidades(mEstado.singleSelect)">
+                    <select name="estadoId" class="form-control" id="estadoId" ng-model="mEstado.singleSelect" ng-change="getCidades(mEstado.singleSelect)" required>
                         <option ng-repeat="option in mEstado.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
                 @*<div ng-show="mCidade.multipleSelect.length">*@
                 <div class=" col-md-3">
                     <label class="control-label">Cidade:</label>
-                    <select name="cidadeId" class="form-control" ng-change="getAnfitriao()" id="CidadeID" ng-model="mCidade.singleSelect">
+                    <select name="cidadeId" class="form-control" ng-change="getAnfitriao()" id="CidadeID" ng-model="mCidade.singleSelect" required>
                         <option ng-repeat="option in mCidade.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
                 @*</div>*@
                  <div class=" col-md-3">
                     <label class="control-label">Bairro:</label>
-                    <input name="Bairro" id="Bairro" ng-model="mBairro" class="form-control" />
+                    <input name="Bairro" id="Bairro" ng-model="mBairro" class="form-control" required/>
                 </div>
             </div>
             <div class="row">
                
                 <div class=" col-md-2">
                     <label class="control-label ">Cep:</label>
-                    <input name="Cep" id="Cep" ng-model="mCep" class="form-control" />
+                    <input name="Cep" id="Cep" ng-model="mCep" class="form-control" required ng-pattern="/^\d$/" />
                 </div>
        
                 <div class=" col-md-6">
                     <label class="control-label">Logradouro:</label>
-                    <input name="Logradouro" id="Logradouro" ng-model="mLogradouro" class="form-control" />
+                    <input name="Logradouro" id="Logradouro" ng-model="mLogradouro" class="form-control"  required/>
                 </div>
            
                 <div class=" col-md-1">
                     <label class="control-label">Numero:</label>
-                    <input name="Numero" id="Numero" ng-model="mNumero" class="form-control" />
+                    <input name="Numero" id="Numero" ng-model="mNumero" class="form-control" required />
                 </div>
                 <div class=" col-md-3">
                     <label class="control-label">Complemento:</label>
@@ -117,13 +125,13 @@
             <div class="row">
                 <div class="col-md-6">
                     <label class="control-label">Tipo de Pele:</label>
-                    <select class="form-control" ng-load="getTipoPele()" name="TipoPele" id="TipoPele" ng-model="mTipoPele.singleSelect">
+                    <select class="form-control" ng-load="getTipoPele()" name="TipoPele" id="TipoPele" ng-model="mTipoPele.singleSelect" required>
                         <option ng-repeat="option in  mTipoPele.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
             <div class="col-md-6">
                     <label class="control-label">Tom de Pele:</label>
-                    <select class="form-control" ng-load="getTomPele()" name="TomPele" id="TomPele" ng-model="mTomPele.singleSelect">
+                    <select class="form-control" ng-load="getTomPele()" name="TomPele" id="TomPele" ng-model="mTomPele.singleSelect" required>
                         <option ng-repeat="option in  mTomPele.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
@@ -131,27 +139,25 @@
             <div  class="row">
                 <div class="col-md-6">
                     <label class="control-label">Anfitrião:</label>
-                    <select class="form-control" ng-change="getFormaContato()" name="Anfitriao" id="Anfitriao" ng-model="mAnfitriao.singleSelect">
+                    <select class="form-control" ng-change="getFormaContato()" name="Anfitriao" id="Anfitriao" ng-model="mAnfitriao.singleSelect" required>
                         <option ng-repeat="option in  mAnfitriao.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label class="control-label">Forma Contato:</label>
-                    <select class="form-control" name="FormaContato" id="FormaContato" ng-model="mFormaContato.singleSelect">
+                    <select class="form-control" name="FormaContato" id="FormaContato" ng-model="mFormaContato.singleSelect" required>
                         <option ng-repeat="option in mFormaContato.multipleSelect" value="{{option.id}}">{{option.name}}</option>
                     </select>
                 </div>
                 <div class="col-md-4">
                      <label class="control-label">&nbsp;</label>
                     <p>
-                        <input type="submit" ng-click="Salvar()" value="Salvar" class="btn  btn-danger" />
+                        <input type="button" ng-click="myForm.$valid && Salvar()" value="Salvar" class="btn  btn-danger" />
                     </p>
                 </div>
             </div>
             
         </form> 
     </div>
-}
-@**@
 
 

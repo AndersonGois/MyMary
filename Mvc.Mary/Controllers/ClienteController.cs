@@ -57,7 +57,7 @@ namespace Mvc.Mary.Controllers
         {
             _clienteFacade.Salvar(cliente);
 
-            return Json(_clienteFacade.GetPaizSelect(), JsonRequestBehavior.AllowGet);
+            return View("Index");
         }
 
         [HttpPost]
